@@ -13,6 +13,9 @@ final class CommunityViewController: UIViewController {
 	private enum Constants {
 		static let bannerReuseId = String(describing: ActionBannerCell.self)
 		static let spaceReuseId = String(describing: SpaceCell.self)
+		static let teamReuseId = String(describing: TeamTableViewCell.self)
+		static let titleReuseId = String(describing: TitileCell.self)
+		static let topLeaderBoardReuseId = String(describing: LeaderBoardCell.self)
 	}
 	
 	private lazy var tableView: UITableView = {
@@ -21,6 +24,10 @@ final class CommunityViewController: UIViewController {
 		table.dataSource = self
 		table.register(UINib(resource: R.nib.actionBannerCell), forCellReuseIdentifier: Constants.bannerReuseId)
 		table.register(SpaceCell.self, forCellReuseIdentifier: Constants.spaceReuseId)
+		table.register(UINib(resource: R.nib.teamTableViewCell), forCellReuseIdentifier: Constants.teamReuseId)
+		table.register(TitileCell.self, forCellReuseIdentifier: Constants.titleReuseId)
+		table.register(UINib(resource: R.nib.leaderBoardCell), forCellReuseIdentifier: Constants.topLeaderBoardReuseId)
+		
 		return table
 	}()
 	
@@ -67,11 +74,33 @@ extension CommunityViewController: UITableViewDelegate {
 }
 
 extension CommunityViewController: UITableViewDataSource {
+	func numberOfSections(in tableView: UITableView) -> Int {
+		2
+	}
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		3
+		if section == 0 {
+			return 4
+		}
+		if section == 1 {
+			return 9
+		}
+		return 0
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let section = indexPath.section
+		if section == 0 {
+			return bannerSection(cellForRowAt: indexPath)
+		}
+		if section == 1 {
+			return leaderBoardSection(cellForRowAt: indexPath)
+		}
+		
+		return UITableViewCell()
+	}
+	
+	func bannerSection(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
 			cell?.configureBattle()
@@ -79,7 +108,7 @@ extension CommunityViewController: UITableViewDataSource {
 		}
 		
 		if indexPath.row == 1 {
-			return tableView.dequeueReusableCell(withIdentifier: Constants.spaceReuseId, for: indexPath)
+			return space(cellForRowAt: indexPath, height: 20)
 		}
 		
 		if indexPath.row == 2 {
@@ -88,6 +117,45 @@ extension CommunityViewController: UITableViewDataSource {
 			return cell ?? UITableViewCell()
 		}
 		
+		if indexPath.row == 3 {
+			return space(cellForRowAt: indexPath, height: 30)
+		}
+		
+		if indexPath.row == 4 {
+			return tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath)
+		}
 		return UITableViewCell()
+	}
+	
+	func leaderBoardSection(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.row == 0 {
+			return tableView.dequeueReusableCell(withIdentifier: Constants.titleReuseId, for: indexPath)
+		}
+		
+		if indexPath.row == 1 {
+			return space(cellForRowAt: indexPath, height: 10)
+		}
+		
+		if indexPath.row == 2 {
+			let leaderBoardBanner = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
+			leaderBoardBanner?.asBanner()
+			return leaderBoardBanner ?? UITableViewCell()
+		}
+		
+		if indexPath.row == 3 {
+			return space(cellForRowAt: indexPath, height: 30)
+		}
+		
+		if indexPath.row > 3 {
+			return tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath)
+		}
+		
+		return UITableViewCell()
+	}
+	
+	func space(cellForRowAt indexPath: IndexPath, height: Int) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: Constants.spaceReuseId, for: indexPath) as? SpaceCell
+		cell?.withHeight(height: CGFloat(height))
+		return cell ?? UITableViewCell()
 	}
 }
