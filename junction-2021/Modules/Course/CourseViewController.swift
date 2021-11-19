@@ -52,7 +52,7 @@ final class CourseViewController: UIViewController {
 
         title = "Course"
 
-        //даже не пытайся в это вникнуть. вахвахавх
+        // даже не пытайся в это вникнуть. вахвахавх
         DispatchQueue.main.async { [weak self] in
             self?.navigationController?.navigationBar.sizeToFit()
         }

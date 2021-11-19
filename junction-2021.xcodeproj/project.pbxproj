@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		270D3B4AFAF0E8FC8C15396F /* Pods_junction_2021.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008712EF501A8C781E2EEB9B /* Pods_junction_2021.framework */; };
+		4467DEC0274822050094DBF7 /* ActionBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEBE274822050094DBF7 /* ActionBannerCell.swift */; };
+		4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DEBF274822050094DBF7 /* ActionBannerCell.xib */; };
+		4467DEC4274837F70094DBF7 /* SpaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEC3274837F70094DBF7 /* SpaceCell.swift */; };
 		44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D47DFD2745939D00709885 /* LaunchScreen.storyboard */; };
 		44D47E062745951500709885 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E052745951500709885 /* AuthViewController.swift */; };
 		44D47E0A2745952700709885 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E092745952700709885 /* Assembly.swift */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		008712EF501A8C781E2EEB9B /* Pods_junction_2021.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_junction_2021.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4467DEBE274822050094DBF7 /* ActionBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBannerCell.swift; sourceTree = "<group>"; };
+		4467DEBF274822050094DBF7 /* ActionBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionBannerCell.xib; sourceTree = "<group>"; };
+		4467DEC3274837F70094DBF7 /* SpaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCell.swift; sourceTree = "<group>"; };
 		44D47DFE2745939D00709885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "junction-2021/System/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		44D47E052745951500709885 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44D47E092745952700709885 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 			children = (
 				44D47E12274596E100709885 /* CommunityViewController.swift */,
 				44D47E1C2745A37E00709885 /* CommunityPresenter.swift */,
+				4467DEBE274822050094DBF7 /* ActionBannerCell.swift */,
+				4467DEBF274822050094DBF7 /* ActionBannerCell.xib */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 			children = (
 				D3E4997F2747CEA300B9D58C /* TeamTableViewCell.xib */,
 				D3E4997E2747CEA300B9D58C /* TeamTableViewCell.swift */,
+				4467DEC3274837F70094DBF7 /* SpaceCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */,
+				4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */,
 				D3E499812747CEA300B9D58C /* TeamTableViewCell.xib in Resources */,
 				44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -397,6 +407,7 @@
 				44D47E1A2745A02C00709885 /* AuthPresenter.swift in Sources */,
 				44D47E0A2745952700709885 /* Assembly.swift in Sources */,
 				D3E499832747DA0500B9D58C /* CALayer+applyFigmaShadow.swift in Sources */,
+				4467DEC0274822050094DBF7 /* ActionBannerCell.swift in Sources */,
 				44D47E0D2745953300709885 /* Router.swift in Sources */,
 				44D47E26274621C400709885 /* NetworkService.swift in Sources */,
 				44D47E1D2745A37E00709885 /* CommunityPresenter.swift in Sources */,
@@ -412,6 +423,7 @@
 				D3E499702747A9BB00B9D58C /* Container+resolve.swift in Sources */,
 				D3E4996B27479F0C00B9D58C /* R.generated.swift in Sources */,
 				44D47E622746CD5800709885 /* AuthModel.swift in Sources */,
+				4467DEC4274837F70094DBF7 /* SpaceCell.swift in Sources */,
 				D3E499852747F18200B9D58C /* PressAnimatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

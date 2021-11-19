@@ -15,7 +15,7 @@ final class CoursePresenter: CoursePresenterProtocol {
 
     private weak var view: CourseViewControllerProtocol?
     private let router: RouterProtocol
-
+	
     init(router: RouterProtocol, view: CourseViewControllerProtocol) {
         self.router = router
         self.view = view
