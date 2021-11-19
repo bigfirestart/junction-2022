@@ -98,14 +98,8 @@ extension CourseViewController: CourseViewControllerProtocol {
 }
 
 extension CourseViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? TeamTableViewCell
-        cell?.animateTap()
-    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? TeamTableViewCell
-        cell?.animateRelease()
     }
 }
 
@@ -123,8 +117,6 @@ extension CourseViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-
         let section = indexPath.section
 
         if section == 0 {
@@ -132,7 +124,7 @@ extension CourseViewController: UITableViewDataSource {
             return cell
         } else if section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.stageReuseId, for: indexPath) as? StageTableViewCell
-            cell?.configure(with: .init(stageName: "Test stage", stageNumber: "1.", image: nil))
+            cell?.configure(with: .init(stageName: "Test stage", stageNumber: "1.", statusImage: nil, battleImage: indexPath.row == 0 ?  R.image.swordsIcon() : nil))
             return cell!
         } else {
             return UITableViewCell()

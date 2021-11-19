@@ -21,6 +21,14 @@ class TeamTableViewCell: UITableViewCell, PressAnimatable {
         setupView()
     }
 
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            animateTap()
+        } else {
+            animateRelease()
+        }
+    }
+
     private func setupView() {
         backgroundColor = .appBackground()
         wrapperView.backgroundColor = .white
