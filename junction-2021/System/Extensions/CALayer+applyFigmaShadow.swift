@@ -8,12 +8,12 @@
 import UIKit
 
 extension CALayer {
-    func applyFigmaShadow(color: UIColor, x: CGFloat = 0, y: CGFloat, blur: CGFloat, spread: CGFloat) {
+    func applyFigmaShadow(color: UIColor, x: CGFloat, y: CGFloat, blur: CGFloat, spread: CGFloat) {
         masksToBounds = false
         shadowColor = color.cgColor
         shadowOpacity = 1
         shadowOffset = CGSize(width: x, height: y)
-        shadowRadius = blur / 2.0
+        shadowRadius = blur
         if spread == 0 {
             shadowPath = nil
         } else {
