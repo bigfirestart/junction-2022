@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		270D3B4AFAF0E8FC8C15396F /* Pods_junction_2021.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008712EF501A8C781E2EEB9B /* Pods_junction_2021.framework */; };
+		068799F5FB0654CDC6C3EADC /* Pods_junction_2021.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0945685FAFDE91EF18F8196E /* Pods_junction_2021.framework */; };
 		4467DEC0274822050094DBF7 /* ActionBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEBE274822050094DBF7 /* ActionBannerCell.swift */; };
 		4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DEBF274822050094DBF7 /* ActionBannerCell.xib */; };
 		4467DEC4274837F70094DBF7 /* SpaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEC3274837F70094DBF7 /* SpaceCell.swift */; };
@@ -63,7 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008712EF501A8C781E2EEB9B /* Pods_junction_2021.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_junction_2021.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		03F54ABF69A9B176361FF4E5 /* Pods-junction-2021.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.debug.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.debug.xcconfig"; sourceTree = "<group>"; };
+		0945685FAFDE91EF18F8196E /* Pods_junction_2021.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_junction_2021.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4467DEBE274822050094DBF7 /* ActionBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionBannerCell.swift; sourceTree = "<group>"; };
 		4467DEBF274822050094DBF7 /* ActionBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionBannerCell.xib; sourceTree = "<group>"; };
 		4467DEC3274837F70094DBF7 /* SpaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCell.swift; sourceTree = "<group>"; };
@@ -98,8 +99,7 @@
 		44D47E612746CD5800709885 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		44EA0C89274798ED005CE7D6 /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		44EA0CA32747B329005CE7D6 /* DesignSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
-		C77EC4975D68B6FF9C5F7D8D /* Pods-junction-2021.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.debug.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.debug.xcconfig"; sourceTree = "<group>"; };
-		CF1FDC642296289B1EAF526F /* Pods-junction-2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.release.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.release.xcconfig"; sourceTree = "<group>"; };
+		6A073A69EA549E4920EE37AD /* Pods-junction-2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.release.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.release.xcconfig"; sourceTree = "<group>"; };
 		D3E4994D27454E1400B9D58C /* junction-2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "junction-2021.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E4995027454E1400B9D58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3E4995E27454E1600B9D58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,13 +127,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				270D3B4AFAF0E8FC8C15396F /* Pods_junction_2021.framework in Frameworks */,
+				068799F5FB0654CDC6C3EADC /* Pods_junction_2021.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210518089B8E7E3D60EBFA4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0945685FAFDE91EF18F8196E /* Pods_junction_2021.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4467DEE227483F510094DBF7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,18 +255,10 @@
 		7E53F7BCB613DFC6E0489D18 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C77EC4975D68B6FF9C5F7D8D /* Pods-junction-2021.debug.xcconfig */,
-				CF1FDC642296289B1EAF526F /* Pods-junction-2021.release.xcconfig */,
+				03F54ABF69A9B176361FF4E5 /* Pods-junction-2021.debug.xcconfig */,
+				6A073A69EA549E4920EE37AD /* Pods-junction-2021.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		90678602595382261CB2BBFD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				008712EF501A8C781E2EEB9B /* Pods_junction_2021.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D3E4994427454E1400B9D58C = {
@@ -267,7 +267,7 @@
 				D3E4994F27454E1400B9D58C /* junction-2021 */,
 				D3E4994E27454E1400B9D58C /* Products */,
 				7E53F7BCB613DFC6E0489D18 /* Pods */,
-				90678602595382261CB2BBFD /* Frameworks */,
+				210518089B8E7E3D60EBFA4D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -388,13 +388,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3E4996127454E1600B9D58C /* Build configuration list for PBXNativeTarget "junction-2021" */;
 			buildPhases = (
-				AF0EE559ECE5807DA84391E7 /* [CP] Check Pods Manifest.lock */,
+				F5B3E511E0CB0C8986ABE416 /* [CP] Check Pods Manifest.lock */,
 				D3E4996727479D7200B9D58C /* R.swift */,
 				D3E4994927454E1400B9D58C /* Sources */,
 				D3E4994A27454E1400B9D58C /* Frameworks */,
 				D3E4994B27454E1400B9D58C /* Resources */,
-				12AE5474734ADAF0D7702285 /* [CP] Embed Pods Frameworks */,
 				D3E499652745521100B9D58C /* Lint */,
+				73B53A1C313EA4ED2B32B2EB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -457,7 +457,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		12AE5474734ADAF0D7702285 /* [CP] Embed Pods Frameworks */ = {
+		73B53A1C313EA4ED2B32B2EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -472,28 +472,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-junction-2021/Pods-junction-2021-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF0EE559ECE5807DA84391E7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-junction-2021-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D3E499652745521100B9D58C /* Lint */ = {
@@ -534,6 +512,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		F5B3E511E0CB0C8986ABE416 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-junction-2021-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -720,7 +720,7 @@
 		};
 		D3E4996227454E1600B9D58C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C77EC4975D68B6FF9C5F7D8D /* Pods-junction-2021.debug.xcconfig */;
+			baseConfigurationReference = 03F54ABF69A9B176361FF4E5 /* Pods-junction-2021.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -741,7 +741,7 @@
 		};
 		D3E4996327454E1600B9D58C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF1FDC642296289B1EAF526F /* Pods-junction-2021.release.xcconfig */;
+			baseConfigurationReference = 6A073A69EA549E4920EE37AD /* Pods-junction-2021.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
