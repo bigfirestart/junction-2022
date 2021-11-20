@@ -11,6 +11,7 @@ import Swinject
 protocol AssemblyProtocol: AnyObject {
     func createAuthScreen(router: RouterProtocol, container: Container) -> UIViewController
     func createAuthorizedScreens(router: RouterProtocol, container: Container) -> (tab: UITabBarController, course: UINavigationController, community: UINavigationController)
+    func createTasksScreen(router: RouterProtocol, container: Container) -> UIViewController
 }
 
 final class Assembly: AssemblyProtocol {
@@ -51,5 +52,13 @@ final class Assembly: AssemblyProtocol {
 		return (tab: tabController,
 				course: courseNavigationController,
 				community: communityNavigationController)
+    }
+
+    func createTasksScreen(router: RouterProtocol, container: Container) -> UIViewController {
+        let tasksViewController = TasksViewController()
+        let tasksPresenter = TasksPresenter(view: tasksViewController)
+        tasksViewController.presenter = tasksPresenter
+
+        return tasksViewController
     }
 }

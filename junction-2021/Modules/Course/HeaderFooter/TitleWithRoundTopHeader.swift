@@ -8,6 +8,11 @@
 import UIKit
 
 class TitleWithRoundTopHeader: UITableViewHeaderFooterView {
+
+    struct Model {
+        let titleColor: UIColor
+    }
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         return label
@@ -59,5 +64,9 @@ class TitleWithRoundTopHeader: UITableViewHeaderFooterView {
         titleLabel.text = "Stages"
         titleLabel.font = .systemFont(ofSize: 22, weight: .bold)
         contentView.backgroundColor = .appBackground()
+    }
+
+    func configure(with model: Model) {
+        titleLabel.textColor = model.titleColor
     }
 }
