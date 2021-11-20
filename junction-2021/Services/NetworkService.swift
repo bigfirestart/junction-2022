@@ -9,6 +9,7 @@ import Alamofire
 protocol NetworkServiceProtocol {
 	func auth(authModel: AuthModel, complition: @escaping (Result<String, Error>) -> Void)
     func stages(completion: @escaping (Result<[StagesResponse], Error>) -> Void)
+    func team(completion: @escaping (Result<TeamResponse, Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -16,7 +17,7 @@ final class NetworkService: NetworkServiceProtocol {
     private let tokenManager: TokenManagerProtocol
 	
 	enum AppUrl: String {
-		case auth, stages
+		case auth, stages, team
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -24,6 +25,8 @@ final class NetworkService: NetworkServiceProtocol {
                 return host + "/authentication"
             case .stages:
                 return host + "/courses/current/stages"
+            case .team:
+                return host + "/teams/current"
 			}
 		}
 	}
@@ -77,6 +80,35 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
 
+    func team(completion: @escaping (Result<TeamResponse, Error>) -> Void) {
+        let url = AppUrl.team.absoluteUrl(host: host)
+
+        guard let token = tokenManager.get() else {
+            completion(.failure(AppError.pnhError))
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+
+        let request = AF.request(url, headers: headers)
+        request.responseDecodable(of: TeamResponse.self) { res in
+            guard let value = res.value else {
+                print("🟥 Some network error")
+                completion(.failure(AppError.pnhError))
+                return
+            }
+
+            completion(.success(value))
+        }
+    }
+}
+
+struct TeamResponse: Decodable {
+    let id: Int
+    let name: String
+    let groupId: Int
+    let points: Int
 }
 
 struct StagesResponse: Decodable {

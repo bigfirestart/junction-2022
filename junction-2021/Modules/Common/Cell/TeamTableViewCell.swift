@@ -9,11 +9,21 @@ import UIKit
 
 class TeamTableViewCell: UITableViewCell, PressAnimatable {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet private weak var iconImageView: UIImageView!
     @IBOutlet private weak var teamNameLabel: UILabel!
     @IBOutlet private weak var pointsCountLabel: UILabel!
     @IBOutlet private weak var pointsLabel: UILabel!
+
+    enum State {
+        struct Model {
+            let teamName: String
+            let points: Float
+        }
+
+        case data(Model), loading
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +56,29 @@ class TeamTableViewCell: UITableViewCell, PressAnimatable {
         pointsLabel.text = "points"
         pointsLabel.font = .systemFont(ofSize: 12, weight: .light)
         selectionStyle = .none
+
+    }
+
+    func configure(with state: State) {
+        switch state {
+        case .data(let model):
+            teamNameLabel.text = model.teamName
+            pointsCountLabel.text = String(model.points)
+
+            iconImageView.isHidden = false
+            teamNameLabel.isHidden = false
+            pointsCountLabel.isHidden = false
+            pointsLabel.isHidden = false
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+        case .loading:
+            iconImageView.isHidden = true
+            teamNameLabel.isHidden = true
+            pointsCountLabel.isHidden = true
+            pointsLabel.isHidden = true
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+        }
 
     }
     
