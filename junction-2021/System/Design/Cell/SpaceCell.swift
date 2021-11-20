@@ -17,8 +17,11 @@ class SpaceCell: UITableViewCell {
 	}
 	
 	public func setupView() {
-		heightAnchor.constraint(equalToConstant: 100)
 		backgroundColor = .appBackground()
 		selectionStyle = .none
+	}
+	
+	public func withHeight(height: CGFloat) {
+		heightAnchor.constraint(equalToConstant: height).isActive = true
 	}
 }
