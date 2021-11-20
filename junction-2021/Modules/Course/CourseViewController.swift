@@ -8,13 +8,19 @@
 import UIKit
 
 protocol CourseViewControllerProtocol: AnyObject {
-    func setState(with: CourseViewController.State)
+    func setStageState(with: CourseViewController.StageState)
+    func setTeamState(with: CourseViewController.TeamState)
 }
 
 final class CourseViewController: UIViewController {
 
     var presenter: CoursePresenterProtocol?
-    var state: State = .loading {
+    var stageState: StageState = .loading {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var teamState: TeamState = .loading {
         didSet {
             tableView.reloadData()
         }
@@ -29,9 +35,14 @@ final class CourseViewController: UIViewController {
         static let tableViewContentInset = UIEdgeInsets(top: 45, left: 0, bottom: 16, right: 0)
     }
 
-    enum State {
+    enum StageState {
         case loading
         case data([StagesResponse])
+    }
+
+    enum TeamState {
+        case loading
+        case data(TeamResponse)
     }
 
     private lazy var tableView: UITableView = {
@@ -84,8 +95,12 @@ final class CourseViewController: UIViewController {
 }
 
 extension CourseViewController: CourseViewControllerProtocol {
-    func setState(with state: State) {
-        self.state = state
+    func setStageState(with state: StageState) {
+        self.stageState = state
+    }
+
+    func setTeamState(with state: TeamState) {
+        self.teamState = state
     }
 }
 
@@ -105,7 +120,7 @@ extension CourseViewController: UITableViewDataSource {
             return 1
         }
 
-        switch state {
+        switch stageState {
         case .data(let stages):
             return stages.count
         case .loading:
@@ -117,11 +132,25 @@ extension CourseViewController: UITableViewDataSource {
         let section = indexPath.section
 
         if section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath)
-            return cell
+            switch teamState {
+            case .data(let team):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath) as? TeamTableViewCell else {
+                    print("🟥 Could not dequeue cell: \(Constants.teamReuseId)")
+                    return UITableViewCell()
+                }
+                cell.configure(with: .data(.init(teamName: team.name, points: Float(team.points) / 10)))
+                return cell
+            case .loading:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath) as? TeamTableViewCell else {
+                    print("🟥 Could not dequeue cell: \(Constants.teamReuseId)")
+                    return UITableViewCell()
+                }
+                cell.configure(with: .loading)
+                return cell
+            }
         }
 
-        switch state {
+        switch stageState {
         case .data(let stages):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.stageReuseId, for: indexPath) as? StageTableViewCell else {
                 print("🟥 Could not dequeue cell: \(Constants.stageReuseId)")
