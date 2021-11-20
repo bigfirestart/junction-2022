@@ -49,4 +49,12 @@ extension UIColor {
 	class func appDarkGrey() -> UIColor {
 		return UIColor(red: 72.0 / 255.0, green: 72.0 / 255.0, blue: 74.0 / 255.0, alpha: 0.14)
 	}
+
+    class func inputBorder() -> UIColor {
+        return UIColor(red: 229.0 / 255.0, green: 229.0 / 255.0, blue: 234.0 / 255.0, alpha: 1)
+    }
+
+    class func secondaryText() -> UIColor {
+        return UIColor(red: 60.0 / 255.0, green: 60.0 / 255.0, blue: 67.0 / 255.0, alpha: 0.6)
+    }
 }

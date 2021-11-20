@@ -17,12 +17,12 @@ final class CourseViewController: UIViewController {
     var presenter: CoursePresenterProtocol?
     var stageState: StageState = .loading {
         didSet {
-            tableView.reloadData()
+            tableView.reloadSections(.init(integer: 1), with: .fade)
         }
     }
     var teamState: TeamState = .loading {
         didSet {
-            tableView.reloadData()
+            tableView.reloadSections(.init(integer: 0), with: .fade)
         }
     }
 
@@ -106,7 +106,9 @@ extension CourseViewController: CourseViewControllerProtocol {
 
 extension CourseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didTapStage()
+        if case let .data(stages) = stageState {
+            presenter?.didTapStage(with: stages[indexPath.row])
+        }
     }
 }
 

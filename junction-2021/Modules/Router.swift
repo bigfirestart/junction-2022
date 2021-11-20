@@ -10,7 +10,7 @@ import Swinject
 protocol RouterProtocol {
     func moduleWantsToOpenAuth()
     func moduleWantsToOpenAuthorized()
-    func moduleWantsToOpenTasks()
+    func moduleWantsToOpenTasks(with: Int)
 	func moduleWantsToOpenLeaderboard()
 	func moduleWantsToOpenBattleScreen()
 }
@@ -51,8 +51,8 @@ final class Router: RouterProtocol {
         }
     }
 
-    func moduleWantsToOpenTasks() {
-        let tasksVc = assembly.createTasksScreen(router: self, container: container)
+    func moduleWantsToOpenTasks(with id: Int) {
+        let tasksVc = assembly.createTasksScreen(router: self, id: id, container: container)
         courseNavigationController?.pushViewController(tasksVc, animated: true)
     }
 	
