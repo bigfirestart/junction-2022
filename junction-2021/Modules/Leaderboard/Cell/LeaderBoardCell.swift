@@ -18,7 +18,6 @@ class LeaderBoardCell: UITableViewCell {
 	@IBOutlet weak var numberLabel: UILabel!
 	@IBOutlet weak var commandNameLabel: UILabel!
 	@IBOutlet weak var pointsLabel: UILabel!
-	@IBOutlet weak var battleButton: UIButton!
 	@IBOutlet weak var higlihtedBackgroundView: UIView!
 	@IBOutlet weak var commandLogo: UIImageView!
 	
@@ -42,10 +41,6 @@ class LeaderBoardCell: UITableViewCell {
 		
 		numberLabel.font = .systemFont(ofSize: 22, weight: .bold)
 		
-		battleButton.tintColor = .appModal()
-		battleButton.backgroundColor = .appAcentOrange()
-		battleButton.setRounded()
-		
 		higlihtedBackgroundView.backgroundColor = .appModal()
 		
 		commandLogo.setRounded()
@@ -53,10 +48,6 @@ class LeaderBoardCell: UITableViewCell {
 	
 	func asBanner() {
 		wrapper.layer.cornerRadius = 14
-	}
-	
-	func hideButton() {
-		battleButton.isHidden = true
 	}
 	
 	func configure(model: LeaderboardResponse) {
@@ -90,6 +81,5 @@ class LeaderBoardCell: UITableViewCell {
 		numberLabel.textColor = .appText()
 		pointsLabel.textColor = .appText()
 		commandNameLabel.textColor = .appText()
-		battleButton.isHidden = false
 	}
 }

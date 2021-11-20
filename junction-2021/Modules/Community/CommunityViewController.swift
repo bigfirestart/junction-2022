@@ -141,7 +141,6 @@ extension CommunityViewController: UITableViewDataSource {
 		if indexPath.row == 2 {
 			let leaderBoardBanner = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
 			leaderBoardBanner?.asBanner()
-			leaderBoardBanner?.hideButton()
 			leaderBoardBanner?.commandLogo.image = AvatarFactory.getUserAvatar()
 			return leaderBoardBanner ?? UITableViewCell()
 		}
