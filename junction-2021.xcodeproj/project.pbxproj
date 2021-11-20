@@ -28,6 +28,8 @@
 		4467DF2F2748821A0094DBF7 /* LeaderboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */; };
 		4467DF32274888800094DBF7 /* BattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF31274888800094DBF7 /* BattlePresenter.swift */; };
 		4467DF3527488A260094DBF7 /* Navigation+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF3427488A260094DBF7 /* Navigation+Icon.swift */; };
+		4467DF4E27489E480094DBF7 /* LeaderBoardWithActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF4C27489E480094DBF7 /* LeaderBoardWithActionCell.swift */; };
+		4467DF4F27489E480094DBF7 /* LeaderBoardWithActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF4D27489E480094DBF7 /* LeaderBoardWithActionCell.xib */; };
 		44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D47DFD2745939D00709885 /* LaunchScreen.storyboard */; };
 		44D47E062745951500709885 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E052745951500709885 /* AuthViewController.swift */; };
 		44D47E0A2745952700709885 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E092745952700709885 /* Assembly.swift */; };
@@ -79,6 +81,8 @@
 		4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPresenter.swift; sourceTree = "<group>"; };
 		4467DF31274888800094DBF7 /* BattlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePresenter.swift; sourceTree = "<group>"; };
 		4467DF3427488A260094DBF7 /* Navigation+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Icon.swift"; sourceTree = "<group>"; };
+		4467DF4C27489E480094DBF7 /* LeaderBoardWithActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardWithActionCell.swift; sourceTree = "<group>"; };
+		4467DF4D27489E480094DBF7 /* LeaderBoardWithActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderBoardWithActionCell.xib; sourceTree = "<group>"; };
 		44D47DFE2745939D00709885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "junction-2021/System/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		44D47E052745951500709885 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44D47E092745952700709885 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		4467DF25274881970094DBF7 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
+				4467DF512748A02B0094DBF7 /* Cell */,
 				4467DF2B274881E20094DBF7 /* LeaderboardViewController.swift */,
 				4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */,
 			);
@@ -172,6 +177,15 @@
 				4467DF31274888800094DBF7 /* BattlePresenter.swift */,
 			);
 			path = Battle;
+			sourceTree = "<group>";
+		};
+		4467DF512748A02B0094DBF7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4467DF4C27489E480094DBF7 /* LeaderBoardWithActionCell.swift */,
+				4467DF4D27489E480094DBF7 /* LeaderBoardWithActionCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		44D47E032745941600709885 /* Modules */ = {
@@ -419,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4467DF4F27489E480094DBF7 /* LeaderBoardWithActionCell.xib in Resources */,
 				D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */,
 				4467DEE727483F510094DBF7 /* TeamTableViewCell.xib in Resources */,
 				D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */,
@@ -519,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E499782747C14F00B9D58C /* CourseViewController.swift in Sources */,
+				4467DF4E27489E480094DBF7 /* LeaderBoardWithActionCell.swift in Sources */,
 				D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */,
 				4467DF3527488A260094DBF7 /* Navigation+Icon.swift in Sources */,
 				44D47E13274596E100709885 /* CommunityViewController.swift in Sources */,
