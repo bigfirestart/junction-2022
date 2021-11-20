@@ -46,7 +46,7 @@ class LeaderBoardCell: UITableViewCell {
 		if battleButton != nil {
 			battleButton.tintColor = .appModal()
 			battleButton.backgroundColor = .appAcentOrange()
-			battleButton.setRounded()
+//			battleButton.setRounded()
 		}
 		
 		higlihtedBackgroundView.backgroundColor = .appModal()
