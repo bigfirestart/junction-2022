@@ -20,6 +20,7 @@ class LeaderBoardCell: UITableViewCell {
 	@IBOutlet weak var pointsLabel: UILabel!
 	@IBOutlet weak var battleButton: UIButton!
 	@IBOutlet weak var higlihtedBackgroundView: UIView!
+	@IBOutlet weak var commandLogo: UIImageView!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -43,13 +44,14 @@ class LeaderBoardCell: UITableViewCell {
 		
 		numberLabel.font = .systemFont(ofSize: 22, weight: .bold)
 		
-		if battleButton != nil {
-			battleButton.tintColor = .appModal()
-			battleButton.backgroundColor = .appAcentOrange()
-//			battleButton.setRounded()
-		}
+	
+		battleButton.tintColor = .appModal()
+		battleButton.backgroundColor = .appAcentOrange()
+		battleButton.setRounded()
 		
 		higlihtedBackgroundView.backgroundColor = .appModal()
+		
+		commandLogo.setRounded()
 	}
 	
 	func asBanner() {
@@ -57,9 +59,7 @@ class LeaderBoardCell: UITableViewCell {
 	}
 	
 	func hideButton() {
-		if battleButton != nil {
-			battleButton.isHidden = true
-		}
+		battleButton.isHidden = true
 	}
 	
 	func colorBackground(with color: BackgroundColor) {
