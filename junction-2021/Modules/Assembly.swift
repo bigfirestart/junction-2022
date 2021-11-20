@@ -68,7 +68,7 @@ final class Assembly: AssemblyProtocol {
 	
 	func createLeaderboardScreen(router: RouterProtocol, container: Container) -> UIViewController {
 		let leaderboardViewController = LeaderboardViewController()
-		let leaderboardPresenter = LeaderboardPresenter(router: router, view: leaderboardViewController)
+		let leaderboardPresenter = LeaderboardPresenter(router: router, view: leaderboardViewController, networkService: container.resolve())
 		leaderboardViewController.presenter = leaderboardPresenter
 
 		return leaderboardViewController

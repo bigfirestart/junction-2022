@@ -7,12 +7,28 @@
 
 import UIKit
 
+protocol LeaderboardViewControllerProtocol: AnyObject {
+	func setState(with: LeaderboardViewController.State)
+}
+
 class LeaderboardViewController: UIViewController {
 	var presenter: LeaderboardPresenterProtocol?
 	
 	private enum Constants {
 		static let tableCell = String(describing: LeaderBoardCell.self)
 		static let spaceReuseId = String(describing: SpaceCell.self)
+		static let loaderReuseId = String(describing: LoadingCell.self)
+	}
+	
+	enum State {
+		case loading
+		case data([LeaderboardResponse])
+	}
+	
+	var state: State = .loading {
+		didSet {
+			tableView.reloadData()
+		}
 	}
 	
 	private lazy var tableView: UITableView = {
@@ -22,6 +38,7 @@ class LeaderboardViewController: UIViewController {
 		table.register(SpaceCell.self, forCellReuseIdentifier: Constants.spaceReuseId)
 		
 		table.register(UINib(resource: R.nib.leaderBoardCell), forCellReuseIdentifier: Constants.tableCell)
+		table.register(LoadingCell.self, forCellReuseIdentifier: Constants.loaderReuseId)
 		return table
 	}()
 	
@@ -40,6 +57,7 @@ class LeaderboardViewController: UIViewController {
 		self.view.backgroundColor = .appBackground()
 		
 		setupTable()
+		presenter?.viewDidLoadEvent()
 	}
 	
 	private func setupTable() {
@@ -60,27 +78,36 @@ extension LeaderboardViewController: UITableViewDelegate {
 
 extension LeaderboardViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		20
+		switch state {
+		case .data(let stages):
+			return stages.count
+		case .loading:
+			return 1
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableCell, for: indexPath) as? LeaderBoardCell
-		if indexPath.row == 2 {
-			cell?.colorBackground(with: .orange)
+		switch state {
+		case .data(let leaderboard):
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableCell, for: indexPath) as? LeaderBoardCell else {
+				print("🟥 Could not dequeue cell: \(Constants.tableCell)")
+				return UITableViewCell()
+			}
+
+			cell.configure(model: leaderboard[indexPath.row])
+			return cell
+		case .loading:
+			return tableView.dequeueReusableCell(withIdentifier: Constants.loaderReuseId, for: indexPath)
 		}
-		
-		if indexPath.row == 5 {
-			cell?.colorBackground(with: .blue)
-		}
-		
-		if indexPath.row == 10 {
-			cell?.colorBackground(with: .grey)
-		}
-		cell?.commandLogo.image = AvatarFactory.getRandomAvatar()
-		return cell ?? UITableViewCell()
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		1
+	}
+}
+
+extension LeaderboardViewController: LeaderboardViewControllerProtocol {
+	func setState(with state: State) {
+		self.state = state
 	}
 }
