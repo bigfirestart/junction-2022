@@ -53,8 +53,14 @@ class TaskTableViewCell: UITableViewCell {
         questionStatusIconImageView.layer.borderColor = UIColor.black.cgColor
         questionStatusIconImageView.layer.cornerRadius = 20
 
+        submitButton.layer.borderWidth = 1
+        submitButton.layer.borderColor = UIColor.black.cgColor
+        submitButton.layer.cornerRadius = 8
+
         textFieldWrapperView.layer.cornerRadius = 10
         textFieldWrapperView.layer.borderWidth = 1
         textFieldWrapperView.layer.borderColor = UIColor.gray.cgColor
+
+        selectionStyle = .none
     }
 }

@@ -19,6 +19,7 @@ class TasksViewController: UIViewController {
         static let headerReuseId = String(describing: TitleWithRoundTopHeader.self)
         static let footerReuseId = String(describing: RoundFooter.self)
         static let taskReuseId = String(describing: TaskTableViewCell.self)
+        static let spacingReuseId = String(describing: SpacingWithRoundTopBottomCell.self)
         static let tableViewContentInset = UIEdgeInsets(top: 45, left: 0, bottom: 16, right: 0)
     }
     
@@ -29,6 +30,7 @@ class TasksViewController: UIViewController {
 
         table.register(UINib(resource: R.nib.teamTableViewCell), forCellReuseIdentifier: Constants.teamReuseId)
         table.register(UINib(resource: R.nib.taskTableViewCell), forCellReuseIdentifier: Constants.taskReuseId)
+        table.register(SpacingWithRoundTopBottomCell.self, forCellReuseIdentifier: Constants.spacingReuseId)
 
         table.register(TitleWithRoundTopHeader.self, forHeaderFooterViewReuseIdentifier: Constants.headerReuseId)
         table.register(TitleWithRoundTopHeader.self, forHeaderFooterViewReuseIdentifier: Constants.footerReuseId)
@@ -56,6 +58,8 @@ class TasksViewController: UIViewController {
         title = "Tasks"
         view.backgroundColor = .appBackground()
 
+        hideKeyboardOnTap()
+
         setupTable()
     }
 
@@ -80,23 +84,40 @@ extension TasksViewController: UITableViewDelegate {
 
 extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        if section == 0 {
+            return 1
+        } else if section == 1 {
+            return 3
+        }
+        return 1
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
+        let row = indexPath.row
         
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath)
             return cell
         } else if section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.taskReuseId, for: indexPath) as? TaskTableViewCell
-//            cell?.configure(with: .init(stageName: "Test stage", stageNumber: "1.", statusImage: nil, battleImage: indexPath.row == 0 ?  R.image.swordsIcon() : nil))
-            return cell!
+            if row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.taskReuseId, for: indexPath)
+                return cell
+            } else if row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.spacingReuseId, for: indexPath)
+                return cell
+            } else if row == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.taskReuseId, for: indexPath)
+                return cell
+            }
+            return UITableViewCell()
+        } else if section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.taskReuseId, for: indexPath)
+            return cell
         } else {
             return UITableViewCell()
         }
@@ -106,7 +127,11 @@ extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Constants.headerReuseId) as? TitleWithRoundTopHeader
-            header?.configure(with: .init(titleColor: .orange))
+            header?.configure(with: .init(titleColor: .orange, text: "Checkpoint"))
+            return header
+        } else if section == 2 {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Constants.headerReuseId) as? TitleWithRoundTopHeader
+            header?.configure(with: .init(titleColor: .black, text: "Unresolved tasks"))
             return header
         }
 
@@ -117,6 +142,8 @@ extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
             return UITableView.automaticDimension
+        } else if section == 2 {
+            return UITableView.automaticDimension
         }
 
         return .leastNonzeroMagnitude
@@ -125,12 +152,16 @@ extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == 1 {
             return UITableView.automaticDimension
+        } else if section == 2 {
+            return UITableView.automaticDimension
         }
         return .leastNormalMagnitude
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 1 {
+            return RoundFooter()
+        } else if section == 2 {
             return RoundFooter()
         }
         let view = UIView()
