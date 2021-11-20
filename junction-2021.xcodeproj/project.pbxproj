@@ -44,6 +44,10 @@
 		D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4997B2747C16400B9D58C /* CourseModel.swift */; };
 		D3E499832747DA0500B9D58C /* CALayer+applyFigmaShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499822747DA0500B9D58C /* CALayer+applyFigmaShadow.swift */; };
 		D3E499852747F18200B9D58C /* PressAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499842747F18200B9D58C /* PressAnimatable.swift */; };
+		D3E499A427484B7600B9D58C /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A327484B7600B9D58C /* TasksViewController.swift */; };
+		D3E499A627484B8000B9D58C /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A527484B8000B9D58C /* TasksPresenter.swift */; };
+		D3E499AA27486A1700B9D58C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */; };
+		D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,10 @@
 		D3E4997B2747C16400B9D58C /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		D3E499822747DA0500B9D58C /* CALayer+applyFigmaShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+applyFigmaShadow.swift"; sourceTree = "<group>"; };
 		D3E499842747F18200B9D58C /* PressAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressAnimatable.swift; sourceTree = "<group>"; };
+		D3E499A327484B7600B9D58C /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		D3E499A527484B8000B9D58C /* TasksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
+		D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,7 @@
 		44D47E032745941600709885 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D3E499A227484B5F00B9D58C /* Tasks */,
 				D3E499762747C13E00B9D58C /* Course */,
 				44D47E0F2745954200709885 /* Community */,
 				44D47E042745942800709885 /* Auth */,
@@ -293,6 +302,25 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		D3E499A227484B5F00B9D58C /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D3E499A727486A0600B9D58C /* Cell */,
+				D3E499A327484B7600B9D58C /* TasksViewController.swift */,
+				D3E499A527484B8000B9D58C /* TasksPresenter.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		D3E499A727486A0600B9D58C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */,
+				D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */,
 				4467DEE727483F510094DBF7 /* TeamTableViewCell.xib in Resources */,
 				D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */,
 				4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */,
@@ -454,6 +483,7 @@
 				D3E499782747C14F00B9D58C /* CourseViewController.swift in Sources */,
 				D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */,
 				44D47E13274596E100709885 /* CommunityViewController.swift in Sources */,
+				D3E499A627484B8000B9D58C /* TasksPresenter.swift in Sources */,
 				44D47E1A2745A02C00709885 /* AuthPresenter.swift in Sources */,
 				44D47E0A2745952700709885 /* Assembly.swift in Sources */,
 				D3E499832747DA0500B9D58C /* CALayer+applyFigmaShadow.swift in Sources */,
@@ -463,6 +493,7 @@
 				44D47E1D2745A37E00709885 /* CommunityPresenter.swift in Sources */,
 				4467DEF027483F5B0094DBF7 /* RoundFooter.swift in Sources */,
 				4467DEE827483F510094DBF7 /* StageTableViewCell.swift in Sources */,
+				D3E499AA27486A1700B9D58C /* TaskTableViewCell.swift in Sources */,
 				4467DEF327483F820094DBF7 /* UIView+roundCorner.swift in Sources */,
 				44EA0CA42747B329005CE7D6 /* DesignSystem.swift in Sources */,
 				D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */,
@@ -475,6 +506,7 @@
 				4467DEFF27484D240094DBF7 /* TitileCell.swift in Sources */,
 				D3E4995127454E1400B9D58C /* AppDelegate.swift in Sources */,
 				D3E499702747A9BB00B9D58C /* Container+resolve.swift in Sources */,
+				D3E499A427484B7600B9D58C /* TasksViewController.swift in Sources */,
 				D3E4996B27479F0C00B9D58C /* R.generated.swift in Sources */,
 				4467DEEA27483F510094DBF7 /* TeamTableViewCell.swift in Sources */,
 				44D47E622746CD5800709885 /* AuthModel.swift in Sources */,

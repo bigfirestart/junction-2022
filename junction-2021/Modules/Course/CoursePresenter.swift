@@ -9,6 +9,7 @@ import Foundation
 
 protocol CoursePresenterProtocol: AnyObject {
     func viewDidLoadEvent()
+    func didTapStage()
 }
 
 final class CoursePresenter: CoursePresenterProtocol {
@@ -23,5 +24,9 @@ final class CoursePresenter: CoursePresenterProtocol {
 
     func viewDidLoadEvent() {
         
+    }
+
+    func didTapStage() {
+        router.moduleWantsToOpenTasks()
     }
 }
