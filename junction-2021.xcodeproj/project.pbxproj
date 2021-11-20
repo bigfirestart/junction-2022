@@ -310,7 +310,6 @@
 			children = (
 				D3E499862747F24300B9D58C /* Protocols */,
 				44EA0CA32747B329005CE7D6 /* DesignSystem.swift */,
-				D3E499772747C14F00B9D58C /* CourseViewController.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -330,6 +329,7 @@
 		D3E499762747C13E00B9D58C /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				D3E499772747C14F00B9D58C /* CourseViewController.swift */,
 				D3E499792747C15A00B9D58C /* CoursePresenter.swift */,
 				D3E4997B2747C16400B9D58C /* CourseModel.swift */,
 			);
