@@ -9,6 +9,7 @@ import Alamofire
 protocol NetworkServiceProtocol {
 	func auth(authModel: AuthModel, complition: @escaping (Result<String, Error>) -> Void)
     func stages(completion: @escaping (Result<[StagesResponse], Error>) -> Void)
+	func leaderboard(completion: @escaping (Result<[LeaderboardResponse], Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -16,7 +17,7 @@ final class NetworkService: NetworkServiceProtocol {
     private let tokenManager: TokenManagerProtocol
 	
 	enum AppUrl: String {
-		case auth, stages
+		case auth, stages, leaderboard
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -24,7 +25,10 @@ final class NetworkService: NetworkServiceProtocol {
                 return host + "/authentication"
             case .stages:
                 return host + "/courses/current/stages"
+			case .leaderboard:
+				return host + "/teams/leaderboard"
 			}
+			
 		}
 	}
 
@@ -76,6 +80,19 @@ final class NetworkService: NetworkServiceProtocol {
             completion(.success(value))
         }
     }
+	
+	func leaderboard(completion: @escaping (Result<[LeaderboardResponse], Error>) -> Void) {
+		let url = AppUrl.leaderboard.absoluteUrl(host: host)
+		
+		let header = HTTPHeader(name: "Authorization", value: "Bearer \(tokenManager.get()!)")
+		let headers = HTTPHeaders([header])
+		
+		AF.request(url, headers: headers).responseDecodable(of: [LeaderboardResponse].self) { res in
+			guard let value = res.value else { return }
+
+			completion(.success(value))
+		}
+	}
 
 }
 
@@ -93,4 +110,11 @@ struct AuthResponse: Decodable {
 
 enum AppError: Error {
     case pnhError
+}
+
+struct LeaderboardResponse: Decodable {
+	let id: Int
+	let name: String
+	let groupId: Int
+	let points: Int
 }
