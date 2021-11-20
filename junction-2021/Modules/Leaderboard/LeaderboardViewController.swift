@@ -50,6 +50,7 @@ class LeaderboardViewController: UIViewController {
 		DispatchQueue.main.async { [weak self] in
 			self?.navigationController?.navigationBar.sizeToFit()
 		}
+		self.tableView.allowsMultipleSelectionDuringEditing = false
 	}
 	
 	override func viewDidLoad() {
@@ -103,6 +104,26 @@ extension LeaderboardViewController: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		1
+	}
+	
+	// edit
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	// swiftlint:disable
+	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		let battleAction = UITableViewRowAction(style: .default, title: "Battle", handler: { (action, indexPath) in
+			print("Edit tapped")
+		})
+		battleAction.backgroundColor = .appAcentOrange()
+
+		// action two
+		let colabAction = UITableViewRowAction(style: .default, title: "Colab", handler: { (action, indexPath) in
+			print("Delete tapped")
+		})
+		colabAction.backgroundColor = .appAcentBlue()
+		return [battleAction, colabAction]
 	}
 }
 

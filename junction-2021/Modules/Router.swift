@@ -58,7 +58,7 @@ final class Router: RouterProtocol {
 	
 	func moduleWantsToOpenLeaderboard() {
 		let leaderboardVC = assembly.createLeaderboardScreen(router: self, container: container)
-		communityNavigationController?.present(leaderboardVC, animated: true)
+		communityNavigationController?.pushViewController(leaderboardVC, animated: true)
 	}
 	
 	func moduleWantsToOpenBattleScreen() {

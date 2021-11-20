@@ -54,3 +54,10 @@ final class TextField: UITextField {
 		fatalError("init(coder:) has not been implemented")
 	}
 }
+
+
+// rewrite Cell Delete
+
+extension UITableViewCell.EditingStyle {
+	
+}
