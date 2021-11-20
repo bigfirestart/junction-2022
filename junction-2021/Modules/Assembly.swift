@@ -28,7 +28,7 @@ final class Assembly: AssemblyProtocol {
 		
 		// Course
         let courseView = CourseViewController()
-        let coursePresenter = CoursePresenter(router: router, view: courseView)
+        let coursePresenter = CoursePresenter(router: router, view: courseView, networkService: container.resolve())
 		courseView.presenter = coursePresenter
 		
         let courseNavigationController = UINavigationController()

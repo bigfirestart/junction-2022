@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CourseViewControllerProtocol: AnyObject {
-
+    func setState(with: CourseViewController.State)
 }
 
 final class CourseViewController: UIViewController {
@@ -16,7 +16,7 @@ final class CourseViewController: UIViewController {
     var presenter: CoursePresenterProtocol?
     var state: State = .loading {
         didSet {
-            handleState()
+            tableView.reloadData()
         }
     }
 
@@ -29,11 +29,8 @@ final class CourseViewController: UIViewController {
     }
 
     enum State {
-        struct Model {
-
-        }
         case loading
-        case data(Model)
+        case data([StagesResponse])
     }
 
     private lazy var tableView: UITableView = {
@@ -82,19 +79,12 @@ final class CourseViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.contentInset = Constants.tableViewContentInset
     }
-
-    private func handleState() {
-        switch state {
-        case .data:
-            break
-        case .loading:
-            break
-        }
-    }
 }
 
 extension CourseViewController: CourseViewControllerProtocol {
-
+    func setState(with state: State) {
+        self.state = state
+    }
 }
 
 extension CourseViewController: UITableViewDelegate {
@@ -111,8 +101,13 @@ extension CourseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else {
-            return 10
+        }
+
+        switch state {
+        case .data(let stages):
+            return stages.count
+        case .loading:
+            return 0
         }
     }
 
@@ -122,11 +117,21 @@ extension CourseViewController: UITableViewDataSource {
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath)
             return cell
-        } else if section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.stageReuseId, for: indexPath) as? StageTableViewCell
-            cell?.configure(with: .init(stageName: "Test stage", stageNumber: "1.", statusImage: nil, battleImage: indexPath.row == 0 ?  R.image.swordsIcon() : nil))
-            return cell!
-        } else {
+        }
+
+        switch state {
+        case .data(let stages):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.stageReuseId, for: indexPath) as? StageTableViewCell else {
+                print("🟥 Could not dequeue cell: \(Constants.stageReuseId)")
+                return UITableViewCell()
+            }
+
+            cell.configure(with: .init(stageName: stages[indexPath.row].name,
+                                        stageNumber: String(stages[indexPath.row].id),
+                                        statusImage: nil,
+                                        battleImage: indexPath.row == 0 ?  R.image.swordsIcon() : nil))
+            return cell
+        case .loading:
             return UITableViewCell()
         }
     }
