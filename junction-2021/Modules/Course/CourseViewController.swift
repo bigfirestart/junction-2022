@@ -161,8 +161,9 @@ extension CourseViewController: UITableViewDataSource {
 
             cell.configure(with: .init(stageName: stages[indexPath.row].name,
                                         stageNumber: String(stages[indexPath.row].id),
-                                        statusImage: nil,
-                                        battleImage: indexPath.row == 0 ?  R.image.swordsIcon() : nil))
+                                        status: stages[indexPath.row].status,
+                                        isInBattle: false,
+                                        description: stages[indexPath.row].description))
             return cell
         case .loading:
             return tableView.dequeueReusableCell(withIdentifier: Constants.loaderReuseId, for: indexPath)

@@ -12,16 +12,37 @@ class StageTableViewCell: UITableViewCell {
     struct Model {
         let stageName: String
         let stageNumber: String
-        let statusImage: UIImage?
-        let battleImage: UIImage?
+        let status: String
+        let isInBattle: Bool
+        let description: String
+    }
+
+    enum State: String {
+        case new = "NEW"
+        case review = "IN_REVIEW"
+        case accepted = "ACCEPTED"
+        case declined = "DECLINED"
+
+        var image: UIImage? {
+            switch self {
+            case .new:
+                return nil
+            case .accepted:
+                return R.image.acceptedState()
+            case .declined:
+                return R.image.declinedState()
+            case .review:
+                return R.image.reviewState()
+            }
+        }
     }
 
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var selectionView: UIView!
     @IBOutlet weak var stageLabel: UILabel!
-    @IBOutlet weak var stageNumberLabel: UILabel!
     @IBOutlet weak var stageImageView: UIImageView!
     @IBOutlet weak var battleImageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
@@ -44,14 +65,13 @@ class StageTableViewCell: UITableViewCell {
         wrapperView.backgroundColor = .white
 
         stageLabel.font = .systemFont(ofSize: 15, weight: .semibold)
-        stageNumberLabel.font = .systemFont(ofSize: 22, weight: .bold)
 
         wrapperView.layer.applyFigmaShadow(color: .shadow(), x: 0, y: 4, blur: 8, spread: 0)
 
         stageImageView.layer.cornerRadius = 20
         stageImageView.backgroundColor = .white
 
-        stageImageView.layer.borderColor = UIColor.black.cgColor
+        stageImageView.layer.borderColor = UIColor.inputBorder().cgColor
         stageImageView.layer.borderWidth = 1
         selectionStyle = .none
 
@@ -61,7 +81,21 @@ class StageTableViewCell: UITableViewCell {
 
     func configure(with model: Model) {
         stageLabel.text = model.stageName
-        stageNumberLabel.text = model.stageNumber
-        battleImageView.image = model.battleImage
+        descriptionLabel.text = model.description
+        descriptionLabel.textColor = .secondaryText()
+
+        if let state = State(rawValue: model.status) {
+            stageImageView.isHidden = false
+            stageImageView.image = state.image
+        } else {
+            stageImageView.isHidden = true
+        }
+
+        if model.isInBattle {
+            battleImageView.isHidden = false
+            battleImageView.image = R.image.swordsIcon()
+        } else {
+            battleImageView.isHidden = true
+        }
     }
 }
