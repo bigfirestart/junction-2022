@@ -42,7 +42,6 @@
 		44EA0C8A274798ED005CE7D6 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA0C89274798ED005CE7D6 /* KeyChainService.swift */; };
 		44EA0CA42747B329005CE7D6 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA0CA32747B329005CE7D6 /* DesignSystem.swift */; };
 		D3E4995127454E1400B9D58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4995027454E1400B9D58C /* AppDelegate.swift */; };
-		D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E4995927454E1500B9D58C /* Assets.xcassets */; };
 		D3E4996B27479F0C00B9D58C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4996A27479F0C00B9D58C /* R.generated.swift */; };
 		D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4996C2747A33600B9D58C /* InitialSetupService.swift */; };
 		D3E499702747A9BB00B9D58C /* Container+resolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4996F2747A9BB00B9D58C /* Container+resolve.swift */; };
@@ -56,6 +55,8 @@
 		D3E499A627484B8000B9D58C /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A527484B8000B9D58C /* TasksPresenter.swift */; };
 		D3E499AA27486A1700B9D58C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */; };
 		D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */; };
+		D3E499AF274922BF00B9D58C /* SpacingWithRoundTopBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */; };
+		D3E499B12749305D00B9D58C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E499B02749305D00B9D58C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,7 +98,6 @@
 		CF1FDC642296289B1EAF526F /* Pods-junction-2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.release.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.release.xcconfig"; sourceTree = "<group>"; };
 		D3E4994D27454E1400B9D58C /* junction-2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "junction-2021.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E4995027454E1400B9D58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3E4995927454E1500B9D58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/a19330635/Desktop/junction-2021/junction-2021/System/Assets.xcassets"; sourceTree = "<absolute>"; };
 		D3E4995E27454E1600B9D58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E4996A27479F0C00B9D58C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D3E4996C2747A33600B9D58C /* InitialSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSetupService.swift; sourceTree = "<group>"; };
@@ -112,6 +112,8 @@
 		D3E499A527484B8000B9D58C /* TasksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
 		D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingWithRoundTopBottomCell.swift; sourceTree = "<group>"; };
+		D3E499B02749305D00B9D58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		4467DEE227483F510094DBF7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */,
 				4467DEE327483F510094DBF7 /* TeamTableViewCell.xib */,
 				4467DEE427483F510094DBF7 /* StageTableViewCell.swift */,
 				4467DEE527483F510094DBF7 /* StageTableViewCell.xib */,
@@ -283,8 +286,8 @@
 				D3E499752747BE6800B9D58C /* Extensions */,
 				D3E499742747BE6100B9D58C /* Design */,
 				D3E4996A27479F0C00B9D58C /* R.generated.swift */,
+				D3E499B02749305D00B9D58C /* Assets.xcassets */,
 				44D47DFD2745939D00709885 /* LaunchScreen.storyboard */,
-				D3E4995927454E1500B9D58C /* Assets.xcassets */,
 				D3E4995027454E1400B9D58C /* AppDelegate.swift */,
 			);
 			path = System;
@@ -434,10 +437,10 @@
 				4467DF4F27489E480094DBF7 /* LeaderBoardCell.xib in Resources */,
 				D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */,
 				4467DEE727483F510094DBF7 /* TeamTableViewCell.xib in Resources */,
-				D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */,
 				4467DF22274876390094DBF7 /* ButtonCell.xib in Resources */,
 				4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */,
 				44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */,
+				D3E499B12749305D00B9D58C /* Assets.xcassets in Resources */,
 				4467DEE927483F510094DBF7 /* StageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,6 +556,7 @@
 				44EA0CA42747B329005CE7D6 /* DesignSystem.swift in Sources */,
 				D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */,
 				D3E499732747B6B900B9D58C /* TokenManager.swift in Sources */,
+				D3E499AF274922BF00B9D58C /* SpacingWithRoundTopBottomCell.swift in Sources */,
 				44D47E1727459F0F00709885 /* UIColor+Extension.swift in Sources */,
 				4467DF2C274881E20094DBF7 /* LeaderboardViewController.swift in Sources */,
 				44EA0C8A274798ED005CE7D6 /* KeyChainService.swift in Sources */,

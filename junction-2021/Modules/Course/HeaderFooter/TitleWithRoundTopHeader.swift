@@ -11,6 +11,7 @@ class TitleWithRoundTopHeader: UITableViewHeaderFooterView {
 
     struct Model {
         let titleColor: UIColor
+        let text: String
     }
 
     private lazy var titleLabel: UILabel = {
@@ -68,5 +69,6 @@ class TitleWithRoundTopHeader: UITableViewHeaderFooterView {
 
     func configure(with model: Model) {
         titleLabel.textColor = model.titleColor
+        titleLabel.text = model.text
     }
 }
