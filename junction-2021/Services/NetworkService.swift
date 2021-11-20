@@ -11,6 +11,7 @@ protocol NetworkServiceProtocol {
     func stages(completion: @escaping (Result<[StagesResponse], Error>) -> Void)
 	func leaderboard(completion: @escaping (Result<[LeaderboardResponse], Error>) -> Void)
     func team(completion: @escaping (Result<TeamResponse, Error>) -> Void)
+    func tasks(stageId: Int, completion: @escaping (Result<TasksResponse, Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -18,7 +19,7 @@ final class NetworkService: NetworkServiceProtocol {
     private let tokenManager: TokenManagerProtocol
 	
 	enum AppUrl: String {
-		case auth, stages, team, leaderboard
+		case auth, stages, team, leaderboard, tasks
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -30,6 +31,8 @@ final class NetworkService: NetworkServiceProtocol {
 				return host + "/teams/leaderboard"
             case .team:
                 return host + "/teams/current"
+            case .tasks:
+                return host + "/stages/"
 			}
 			
 		}
@@ -120,31 +123,54 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
 
-    func tasks(completion: @escaping (Result<TasksRespnse, Error>) -> Void) {
+    func tasks(stageId: Int, completion: @escaping (Result<TasksResponse, Error>) -> Void) {
+        let url = AppUrl.tasks.absoluteUrl(host: host) + String(stageId)
 
+        guard let token = tokenManager.get() else {
+            completion(.failure(AppError.pnhError))
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+
+        let request = AF.request(url, headers: headers)
+        request.responseDecodable(of: TasksResponse.self) { res in
+            guard let value = res.value else {
+                print("🟥 Some network error")
+                completion(.failure(AppError.pnhError))
+                return
+            }
+
+            completion(.success(value))
+        }
     }
 }
 
-struct TasksRespnse {
-//    {
-//    "id": 0,
-//    "stageId": 0,
-//    "name": "string",
-//    "description": "string",
-//    "index": 0,
-//    "blocks": [
-//    {
-//    "id": 0,
-//    "content": "string",
-//    "type": "TEXT",
-//    "index": 0
-//    }
-//    ]
-//    }
+struct TasksResponse: Decodable {
+    struct Block: Decodable {
+        let content: String
+        let type: String
+        let index: Int
+    }
 
-    let id: Int
-    let stageId: Int
-    let name: String
+    struct Task: Decodable {
+        let name: String
+        let index: Int
+        let points: Int?
+        let blocks: [Block]
+    }
+
+    struct Checkpoint: Decodable {
+        let name: String
+        let status: String
+        let points: Int?
+        let index: Int
+        let blocks: [Block]
+    }
+
+    let tasks: [Task]
+    let checkpoint: Checkpoint
 }
 
 struct TeamResponse: Decodable {
