@@ -58,7 +58,7 @@ class TasksViewController: UIViewController {
         title = "Tasks"
         view.backgroundColor = .appBackground()
 
-        hideKeyboardOnTap()
+//        hideKeyboardOnTap()
 
         setupTable()
     }

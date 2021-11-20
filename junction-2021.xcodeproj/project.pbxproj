@@ -48,7 +48,6 @@
 		D3E499A627484B8000B9D58C /* TasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A527484B8000B9D58C /* TasksPresenter.swift */; };
 		D3E499AA27486A1700B9D58C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */; };
 		D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */; };
-		D3E499AD2749220600B9D58C /* UIViewController+hideKeyboardOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499AC2749220600B9D58C /* UIViewController+hideKeyboardOnTap.swift */; };
 		D3E499AF274922BF00B9D58C /* SpacingWithRoundTopBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +97,6 @@
 		D3E499A527484B8000B9D58C /* TasksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPresenter.swift; sourceTree = "<group>"; };
 		D3E499A827486A1700B9D58C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
-		D3E499AC2749220600B9D58C /* UIViewController+hideKeyboardOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+hideKeyboardOnTap.swift"; sourceTree = "<group>"; };
 		D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingWithRoundTopBottomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,7 +273,6 @@
 				D3E4996F2747A9BB00B9D58C /* Container+resolve.swift */,
 				44D47E1627459F0F00709885 /* UIColor+Extension.swift */,
 				D3E499822747DA0500B9D58C /* CALayer+applyFigmaShadow.swift */,
-				D3E499AC2749220600B9D58C /* UIViewController+hideKeyboardOnTap.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -486,7 +483,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E499AD2749220600B9D58C /* UIViewController+hideKeyboardOnTap.swift in Sources */,
 				D3E499782747C14F00B9D58C /* CourseViewController.swift in Sources */,
 				D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */,
 				44D47E13274596E100709885 /* CommunityViewController.swift in Sources */,
