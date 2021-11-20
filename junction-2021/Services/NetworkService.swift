@@ -57,12 +57,21 @@ final class NetworkService: NetworkServiceProtocol {
     func stages(completion: @escaping (Result<[StagesResponse], Error>) -> Void) {
         let url = AppUrl.stages.absoluteUrl(host: host)
 
-        let header = HTTPHeader(name: "Authorization", value: "Bearer \(tokenManager.get()!)")
+        guard let token = tokenManager.get() else {
+            completion(.failure(AppError.pnhError))
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
         let headers = HTTPHeaders([header])
 
         let request = AF.request(url, headers: headers)
         request.responseDecodable(of: [StagesResponse].self) { res in
-            guard let value = res.value else { return }
+            guard let value = res.value else {
+                print("🟥 Some network error")
+                completion(.failure(AppError.pnhError))
+                return
+            }
 
             completion(.success(value))
         }
@@ -80,4 +89,8 @@ struct StagesResponse: Decodable {
 struct AuthResponse: Decodable {
 	var token: String
 	var role: String
+}
+
+enum AppError: Error {
+    case pnhError
 }
