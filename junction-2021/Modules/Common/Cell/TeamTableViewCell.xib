@@ -46,9 +46,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vs9-pA-2cw">
+                                <rect key="frame" x="188.5" y="39" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vs9-pA-2cw" firstAttribute="centerY" secondItem="tQb-vH-BZF" secondAttribute="centerY" id="5LJ-3C-dxK"/>
                             <constraint firstItem="Yr7-um-bzC" firstAttribute="top" secondItem="tQb-vH-BZF" secondAttribute="top" constant="26" id="67l-dV-kTP"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bcD-ZE-gDN" secondAttribute="bottom" constant="16" id="A0i-jo-2fk"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9Ih-Y3-fK2" secondAttribute="bottom" constant="16" id="AYI-3r-xpg"/>
@@ -56,6 +60,7 @@
                             <constraint firstItem="9Ih-Y3-fK2" firstAttribute="centerX" secondItem="pnF-sa-VfI" secondAttribute="centerX" id="FSu-Py-cFF"/>
                             <constraint firstItem="Yr7-um-bzC" firstAttribute="leading" secondItem="bcD-ZE-gDN" secondAttribute="trailing" constant="16" id="HxQ-oc-HXq"/>
                             <constraint firstItem="bcD-ZE-gDN" firstAttribute="top" secondItem="tQb-vH-BZF" secondAttribute="top" constant="16" id="LeX-ar-HT0"/>
+                            <constraint firstItem="vs9-pA-2cw" firstAttribute="centerX" secondItem="tQb-vH-BZF" secondAttribute="centerX" id="RIS-4l-KGP"/>
                             <constraint firstItem="bcD-ZE-gDN" firstAttribute="leading" secondItem="tQb-vH-BZF" secondAttribute="leading" constant="16" id="aoN-4T-WK0"/>
                             <constraint firstAttribute="trailing" secondItem="pnF-sa-VfI" secondAttribute="trailing" constant="21" id="f3C-o1-Ctf"/>
                             <constraint firstItem="9Ih-Y3-fK2" firstAttribute="top" secondItem="pnF-sa-VfI" secondAttribute="bottom" constant="2" id="twj-g4-UrG"/>
@@ -71,6 +76,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicator" destination="vs9-pA-2cw" id="FUv-ww-8JO"/>
                 <outlet property="iconImageView" destination="bcD-ZE-gDN" id="Af3-Ur-qQs"/>
                 <outlet property="pointsCountLabel" destination="pnF-sa-VfI" id="c4D-u8-foR"/>
                 <outlet property="pointsLabel" destination="9Ih-Y3-fK2" id="pTn-xy-IZf"/>
