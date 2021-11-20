@@ -44,4 +44,9 @@ extension UIColor {
     class func shadow() -> UIColor {
         return UIColor(red: 129.0 / 255.0, green: 135.0 / 255.0, blue: 189.0 / 255.0, alpha: 0.14)
     }
+	
+	// #48484A
+	class func appDarkGrey() -> UIColor {
+		return UIColor(red: 72.0 / 255.0, green: 72.0 / 255.0, blue: 74.0 / 255.0, alpha: 0.14)
+	}
 }

@@ -103,6 +103,7 @@
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="battleButton" destination="Shk-g2-j3D" id="IQd-6v-nBV"/>
+                <outlet property="commandLogo" destination="nhK-2d-iFm" id="Wo3-gu-jwB"/>
                 <outlet property="commandNameLabel" destination="Shz-9S-6vn" id="G92-dC-m0s"/>
                 <outlet property="higlihtedBackgroundView" destination="4WJ-ij-B1L" id="egI-Cn-2Oh"/>
                 <outlet property="numberLabel" destination="HQS-0y-49P" id="2xQ-x4-kyG"/>

@@ -76,6 +76,7 @@ extension LeaderboardViewController: UITableViewDataSource {
 		if indexPath.row == 10 {
 			cell?.colorBackground(with: .grey)
 		}
+		cell?.commandLogo.image = AvatarFactory.getRandomAvatar()
 		return cell ?? UITableViewCell()
 	}
 	

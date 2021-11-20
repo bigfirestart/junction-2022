@@ -142,6 +142,7 @@ extension CommunityViewController: UITableViewDataSource {
 			let leaderBoardBanner = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
 			leaderBoardBanner?.asBanner()
 			leaderBoardBanner?.hideButton()
+			leaderBoardBanner?.commandLogo.image = AvatarFactory.getUserAvatar()
 			return leaderBoardBanner ?? UITableViewCell()
 		}
 		
@@ -151,7 +152,7 @@ extension CommunityViewController: UITableViewDataSource {
 		
 		if indexPath.row > 3 && indexPath.row < 9 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
-			cell?.hideButton()
+			cell?.commandLogo.image = AvatarFactory.getRandomAvatar()
 			return cell ?? UITableViewCell()
 		}
 		

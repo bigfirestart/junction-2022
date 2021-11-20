@@ -95,17 +95,16 @@
                         <constraint firstAttribute="trailing" secondItem="Mro-cc-CEa" secondAttribute="trailing" constant="35" id="FMy-we-Ynr"/>
                         <constraint firstItem="Mro-cc-CEa" firstAttribute="top" secondItem="1PB-cz-qlt" secondAttribute="top" constant="158" id="dSp-LD-s3o"/>
                         <constraint firstItem="Mro-cc-CEa" firstAttribute="leading" secondItem="1PB-cz-qlt" secondAttribute="leading" constant="36" id="nHI-rS-tV7"/>
+                        <constraint firstAttribute="height" constant="239" id="xo9-ko-Gn1"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1PB-cz-qlt" secondAttribute="bottom" constant="623" id="03W-Fp-KjD"/>
                 <constraint firstItem="qvV-Sj-gIA" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="5wC-8j-LgN"/>
                 <constraint firstItem="bco-81-sMa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="EIB-Qb-Q6T"/>
                 <constraint firstAttribute="bottom" secondItem="bco-81-sMa" secondAttribute="bottom" id="Eb6-Wh-ODb"/>
-                <constraint firstItem="1PB-cz-qlt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Hag-ZI-eAc"/>
                 <constraint firstItem="qvV-Sj-gIA" firstAttribute="top" secondItem="1PB-cz-qlt" secondAttribute="bottom" constant="-15" id="NjK-8f-Yxx"/>
                 <constraint firstItem="qvV-Sj-gIA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="O9X-dU-zl7"/>
                 <constraint firstItem="bco-81-sMa" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.75" id="TSw-r4-xAA"/>
