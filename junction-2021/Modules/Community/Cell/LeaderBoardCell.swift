@@ -39,5 +39,4 @@ class LeaderBoardCell: UITableViewCell {
 	func asBanner() {
 		wrapper.layer.cornerRadius = 14
 	}
-    
 }

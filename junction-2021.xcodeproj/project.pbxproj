@@ -21,6 +21,13 @@
 		4467DEFF27484D240094DBF7 /* TitileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEFE27484D240094DBF7 /* TitileCell.swift */; };
 		4467DF03274855E80094DBF7 /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF01274855E80094DBF7 /* LeaderBoardCell.swift */; };
 		4467DF04274855E80094DBF7 /* LeaderBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF02274855E80094DBF7 /* LeaderBoardCell.xib */; };
+		4467DF21274876390094DBF7 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF1F274876390094DBF7 /* ButtonCell.swift */; };
+		4467DF22274876390094DBF7 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF20274876390094DBF7 /* ButtonCell.xib */; };
+		4467DF28274881C80094DBF7 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF27274881C80094DBF7 /* BattleViewController.swift */; };
+		4467DF2C274881E20094DBF7 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF2B274881E20094DBF7 /* LeaderboardViewController.swift */; };
+		4467DF2F2748821A0094DBF7 /* LeaderboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */; };
+		4467DF32274888800094DBF7 /* BattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF31274888800094DBF7 /* BattlePresenter.swift */; };
+		4467DF3527488A260094DBF7 /* Navigation+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF3427488A260094DBF7 /* Navigation+Icon.swift */; };
 		44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D47DFD2745939D00709885 /* LaunchScreen.storyboard */; };
 		44D47E062745951500709885 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E052745951500709885 /* AuthViewController.swift */; };
 		44D47E0A2745952700709885 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E092745952700709885 /* Assembly.swift */; };
@@ -65,6 +72,13 @@
 		4467DEFE27484D240094DBF7 /* TitileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitileCell.swift; sourceTree = "<group>"; };
 		4467DF01274855E80094DBF7 /* LeaderBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
 		4467DF02274855E80094DBF7 /* LeaderBoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderBoardCell.xib; sourceTree = "<group>"; };
+		4467DF1F274876390094DBF7 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		4467DF20274876390094DBF7 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
+		4467DF27274881C80094DBF7 /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		4467DF2B274881E20094DBF7 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPresenter.swift; sourceTree = "<group>"; };
+		4467DF31274888800094DBF7 /* BattlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePresenter.swift; sourceTree = "<group>"; };
+		4467DF3427488A260094DBF7 /* Navigation+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Icon.swift"; sourceTree = "<group>"; };
 		44D47DFE2745939D00709885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "junction-2021/System/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		44D47E052745951500709885 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44D47E092745952700709885 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -81,7 +95,7 @@
 		CF1FDC642296289B1EAF526F /* Pods-junction-2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.release.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.release.xcconfig"; sourceTree = "<group>"; };
 		D3E4994D27454E1400B9D58C /* junction-2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "junction-2021.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E4995027454E1400B9D58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3E4995927454E1500B9D58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3E4995927454E1500B9D58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/a19330635/Desktop/junction-2021/junction-2021/System/Assets.xcassets"; sourceTree = "<absolute>"; };
 		D3E4995E27454E1600B9D58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E4996A27479F0C00B9D58C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D3E4996C2747A33600B9D58C /* InitialSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSetupService.swift; sourceTree = "<group>"; };
@@ -142,9 +156,29 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		4467DF25274881970094DBF7 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				4467DF2B274881E20094DBF7 /* LeaderboardViewController.swift */,
+				4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		4467DF26274881AE0094DBF7 /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				4467DF27274881C80094DBF7 /* BattleViewController.swift */,
+				4467DF31274888800094DBF7 /* BattlePresenter.swift */,
+			);
+			path = Battle;
+			sourceTree = "<group>";
+		};
 		44D47E032745941600709885 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4467DF26274881AE0094DBF7 /* Battle */,
+				4467DF25274881970094DBF7 /* Leaderboard */,
 				D3E499A227484B5F00B9D58C /* Tasks */,
 				D3E499762747C13E00B9D58C /* Course */,
 				44D47E0F2745954200709885 /* Community */,
@@ -270,6 +304,7 @@
 				D3E4996F2747A9BB00B9D58C /* Container+resolve.swift */,
 				44D47E1627459F0F00709885 /* UIColor+Extension.swift */,
 				D3E499822747DA0500B9D58C /* CALayer+applyFigmaShadow.swift */,
+				4467DF3427488A260094DBF7 /* Navigation+Icon.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -298,6 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				4467DEC3274837F70094DBF7 /* SpaceCell.swift */,
+				4467DF1F274876390094DBF7 /* ButtonCell.swift */,
+				4467DF20274876390094DBF7 /* ButtonCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -385,6 +422,7 @@
 				D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */,
 				4467DEE727483F510094DBF7 /* TeamTableViewCell.xib in Resources */,
 				D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */,
+				4467DF22274876390094DBF7 /* ButtonCell.xib in Resources */,
 				4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */,
 				44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */,
 				4467DEE927483F510094DBF7 /* StageTableViewCell.xib in Resources */,
@@ -482,6 +520,7 @@
 			files = (
 				D3E499782747C14F00B9D58C /* CourseViewController.swift in Sources */,
 				D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */,
+				4467DF3527488A260094DBF7 /* Navigation+Icon.swift in Sources */,
 				44D47E13274596E100709885 /* CommunityViewController.swift in Sources */,
 				D3E499A627484B8000B9D58C /* TasksPresenter.swift in Sources */,
 				44D47E1A2745A02C00709885 /* AuthPresenter.swift in Sources */,
@@ -493,13 +532,18 @@
 				44D47E1D2745A37E00709885 /* CommunityPresenter.swift in Sources */,
 				4467DEF027483F5B0094DBF7 /* RoundFooter.swift in Sources */,
 				4467DEE827483F510094DBF7 /* StageTableViewCell.swift in Sources */,
+				4467DF2F2748821A0094DBF7 /* LeaderboardPresenter.swift in Sources */,
+				4467DF21274876390094DBF7 /* ButtonCell.swift in Sources */,
+				4467DF28274881C80094DBF7 /* BattleViewController.swift in Sources */,
 				D3E499AA27486A1700B9D58C /* TaskTableViewCell.swift in Sources */,
 				4467DEF327483F820094DBF7 /* UIView+roundCorner.swift in Sources */,
+				4467DF32274888800094DBF7 /* BattlePresenter.swift in Sources */,
 				44EA0CA42747B329005CE7D6 /* DesignSystem.swift in Sources */,
 				D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */,
 				4467DF03274855E80094DBF7 /* LeaderBoardCell.swift in Sources */,
 				D3E499732747B6B900B9D58C /* TokenManager.swift in Sources */,
 				44D47E1727459F0F00709885 /* UIColor+Extension.swift in Sources */,
+				4467DF2C274881E20094DBF7 /* LeaderboardViewController.swift in Sources */,
 				44EA0C8A274798ED005CE7D6 /* KeyChainService.swift in Sources */,
 				44D47E062745951500709885 /* AuthViewController.swift in Sources */,
 				D3E4997A2747C15A00B9D58C /* CoursePresenter.swift in Sources */,

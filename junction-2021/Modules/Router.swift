@@ -11,6 +11,7 @@ protocol RouterProtocol {
     func moduleWantsToOpenAuth()
     func moduleWantsToOpenAuthorized()
     func moduleWantsToOpenTasks()
+	func moduleWantsToOpenLeaderboard()
 }
 
 final class Router: RouterProtocol {
@@ -53,4 +54,9 @@ final class Router: RouterProtocol {
         let tasksVc = assembly.createTasksScreen(router: self, container: container)
         courseNavigationController?.pushViewController(tasksVc, animated: true)
     }
+	
+	func moduleWantsToOpenLeaderboard() {
+		let leaderboardVC = assembly.createLeaderboardScreen(router: self, container: container)
+		communityNavigationController?.pushViewController(leaderboardVC, animated: true)
+	}
 }
