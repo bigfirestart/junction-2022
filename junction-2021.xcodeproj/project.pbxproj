@@ -19,17 +19,16 @@
 		4467DEF027483F5B0094DBF7 /* RoundFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEEE27483F5B0094DBF7 /* RoundFooter.swift */; };
 		4467DEF327483F820094DBF7 /* UIView+roundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEF227483F820094DBF7 /* UIView+roundCorner.swift */; };
 		4467DEFF27484D240094DBF7 /* TitileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DEFE27484D240094DBF7 /* TitileCell.swift */; };
-		4467DF03274855E80094DBF7 /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF01274855E80094DBF7 /* LeaderBoardCell.swift */; };
-		4467DF04274855E80094DBF7 /* LeaderBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF02274855E80094DBF7 /* LeaderBoardCell.xib */; };
 		4467DF21274876390094DBF7 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF1F274876390094DBF7 /* ButtonCell.swift */; };
 		4467DF22274876390094DBF7 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF20274876390094DBF7 /* ButtonCell.xib */; };
-		4467DF28274881C80094DBF7 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF27274881C80094DBF7 /* BattleViewController.swift */; };
 		4467DF2C274881E20094DBF7 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF2B274881E20094DBF7 /* LeaderboardViewController.swift */; };
 		4467DF2F2748821A0094DBF7 /* LeaderboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */; };
 		4467DF32274888800094DBF7 /* BattlePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF31274888800094DBF7 /* BattlePresenter.swift */; };
 		4467DF3527488A260094DBF7 /* Navigation+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF3427488A260094DBF7 /* Navigation+Icon.swift */; };
-		4467DF4E27489E480094DBF7 /* LeaderBoardWithActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF4C27489E480094DBF7 /* LeaderBoardWithActionCell.swift */; };
-		4467DF4F27489E480094DBF7 /* LeaderBoardWithActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF4D27489E480094DBF7 /* LeaderBoardWithActionCell.xib */; };
+		4467DF4E27489E480094DBF7 /* LeaderBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF4C27489E480094DBF7 /* LeaderBoardCell.swift */; };
+		4467DF4F27489E480094DBF7 /* LeaderBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF4D27489E480094DBF7 /* LeaderBoardCell.xib */; };
+		4467DF60274914DA0094DBF7 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467DF5E274914DA0094DBF7 /* BattleViewController.swift */; };
+		4467DF61274914DA0094DBF7 /* BattleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4467DF5F274914DA0094DBF7 /* BattleViewController.xib */; };
 		44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D47DFD2745939D00709885 /* LaunchScreen.storyboard */; };
 		44D47E062745951500709885 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E052745951500709885 /* AuthViewController.swift */; };
 		44D47E0A2745952700709885 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E092745952700709885 /* Assembly.swift */; };
@@ -72,17 +71,16 @@
 		4467DEEE27483F5B0094DBF7 /* RoundFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundFooter.swift; sourceTree = "<group>"; };
 		4467DEF227483F820094DBF7 /* UIView+roundCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+roundCorner.swift"; sourceTree = "<group>"; };
 		4467DEFE27484D240094DBF7 /* TitileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitileCell.swift; sourceTree = "<group>"; };
-		4467DF01274855E80094DBF7 /* LeaderBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
-		4467DF02274855E80094DBF7 /* LeaderBoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderBoardCell.xib; sourceTree = "<group>"; };
 		4467DF1F274876390094DBF7 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		4467DF20274876390094DBF7 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
-		4467DF27274881C80094DBF7 /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		4467DF2B274881E20094DBF7 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		4467DF2E2748821A0094DBF7 /* LeaderboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPresenter.swift; sourceTree = "<group>"; };
 		4467DF31274888800094DBF7 /* BattlePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePresenter.swift; sourceTree = "<group>"; };
 		4467DF3427488A260094DBF7 /* Navigation+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation+Icon.swift"; sourceTree = "<group>"; };
-		4467DF4C27489E480094DBF7 /* LeaderBoardWithActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardWithActionCell.swift; sourceTree = "<group>"; };
-		4467DF4D27489E480094DBF7 /* LeaderBoardWithActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderBoardWithActionCell.xib; sourceTree = "<group>"; };
+		4467DF4C27489E480094DBF7 /* LeaderBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardCell.swift; sourceTree = "<group>"; };
+		4467DF4D27489E480094DBF7 /* LeaderBoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderBoardCell.xib; sourceTree = "<group>"; };
+		4467DF5E274914DA0094DBF7 /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		4467DF5F274914DA0094DBF7 /* BattleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleViewController.xib; sourceTree = "<group>"; };
 		44D47DFE2745939D00709885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "junction-2021/System/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		44D47E052745951500709885 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44D47E092745952700709885 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
@@ -154,8 +152,6 @@
 				4467DEBE274822050094DBF7 /* ActionBannerCell.swift */,
 				4467DEBF274822050094DBF7 /* ActionBannerCell.xib */,
 				4467DEFE27484D240094DBF7 /* TitileCell.swift */,
-				4467DF01274855E80094DBF7 /* LeaderBoardCell.swift */,
-				4467DF02274855E80094DBF7 /* LeaderBoardCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -173,8 +169,9 @@
 		4467DF26274881AE0094DBF7 /* Battle */ = {
 			isa = PBXGroup;
 			children = (
-				4467DF27274881C80094DBF7 /* BattleViewController.swift */,
 				4467DF31274888800094DBF7 /* BattlePresenter.swift */,
+				4467DF5E274914DA0094DBF7 /* BattleViewController.swift */,
+				4467DF5F274914DA0094DBF7 /* BattleViewController.xib */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -182,8 +179,8 @@
 		4467DF512748A02B0094DBF7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4467DF4C27489E480094DBF7 /* LeaderBoardWithActionCell.swift */,
-				4467DF4D27489E480094DBF7 /* LeaderBoardWithActionCell.xib */,
+				4467DF4C27489E480094DBF7 /* LeaderBoardCell.swift */,
+				4467DF4D27489E480094DBF7 /* LeaderBoardCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -304,6 +301,7 @@
 		D3E499742747BE6100B9D58C /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				D3E499772747C14F00B9D58C /* CourseViewController.swift */,
 				D3E499872747F24A00B9D58C /* Cell */,
 				D3E499862747F24300B9D58C /* Protocols */,
 				44EA0CA32747B329005CE7D6 /* DesignSystem.swift */,
@@ -328,7 +326,6 @@
 			children = (
 				4467DEEC27483F5B0094DBF7 /* HeaderFooter */,
 				4467DEE227483F510094DBF7 /* Cell */,
-				D3E499772747C14F00B9D58C /* CourseViewController.swift */,
 				D3E499792747C15A00B9D58C /* CoursePresenter.swift */,
 				D3E4997B2747C16400B9D58C /* CourseModel.swift */,
 			);
@@ -433,7 +430,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4467DF4F27489E480094DBF7 /* LeaderBoardWithActionCell.xib in Resources */,
+				4467DF61274914DA0094DBF7 /* BattleViewController.xib in Resources */,
+				4467DF4F27489E480094DBF7 /* LeaderBoardCell.xib in Resources */,
 				D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */,
 				4467DEE727483F510094DBF7 /* TeamTableViewCell.xib in Resources */,
 				D3E4995A27454E1600B9D58C /* Assets.xcassets in Resources */,
@@ -441,7 +439,6 @@
 				4467DEC1274822050094DBF7 /* ActionBannerCell.xib in Resources */,
 				44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */,
 				4467DEE927483F510094DBF7 /* StageTableViewCell.xib in Resources */,
-				4467DF04274855E80094DBF7 /* LeaderBoardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E499782747C14F00B9D58C /* CourseViewController.swift in Sources */,
-				4467DF4E27489E480094DBF7 /* LeaderBoardWithActionCell.swift in Sources */,
+				4467DF4E27489E480094DBF7 /* LeaderBoardCell.swift in Sources */,
 				D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */,
 				4467DF3527488A260094DBF7 /* Navigation+Icon.swift in Sources */,
 				44D47E13274596E100709885 /* CommunityViewController.swift in Sources */,
@@ -550,13 +547,11 @@
 				4467DEE827483F510094DBF7 /* StageTableViewCell.swift in Sources */,
 				4467DF2F2748821A0094DBF7 /* LeaderboardPresenter.swift in Sources */,
 				4467DF21274876390094DBF7 /* ButtonCell.swift in Sources */,
-				4467DF28274881C80094DBF7 /* BattleViewController.swift in Sources */,
 				D3E499AA27486A1700B9D58C /* TaskTableViewCell.swift in Sources */,
 				4467DEF327483F820094DBF7 /* UIView+roundCorner.swift in Sources */,
 				4467DF32274888800094DBF7 /* BattlePresenter.swift in Sources */,
 				44EA0CA42747B329005CE7D6 /* DesignSystem.swift in Sources */,
 				D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */,
-				4467DF03274855E80094DBF7 /* LeaderBoardCell.swift in Sources */,
 				D3E499732747B6B900B9D58C /* TokenManager.swift in Sources */,
 				44D47E1727459F0F00709885 /* UIColor+Extension.swift in Sources */,
 				4467DF2C274881E20094DBF7 /* LeaderboardViewController.swift in Sources */,
@@ -568,6 +563,7 @@
 				D3E499702747A9BB00B9D58C /* Container+resolve.swift in Sources */,
 				D3E499A427484B7600B9D58C /* TasksViewController.swift in Sources */,
 				D3E4996B27479F0C00B9D58C /* R.generated.swift in Sources */,
+				4467DF60274914DA0094DBF7 /* BattleViewController.swift in Sources */,
 				4467DEEA27483F510094DBF7 /* TeamTableViewCell.swift in Sources */,
 				44D47E622746CD5800709885 /* AuthModel.swift in Sources */,
 				4467DEC4274837F70094DBF7 /* SpaceCell.swift in Sources */,

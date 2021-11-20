@@ -105,6 +105,7 @@ extension CommunityViewController: UITableViewDataSource {
 		if indexPath.row == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
 			cell?.configureBattle()
+			cell?.transitionButton.addTarget(self, action: #selector(battleBannerButtonTapped), for: .touchUpInside)
 			return cell ?? UITableViewCell()
 		}
 		
@@ -140,6 +141,7 @@ extension CommunityViewController: UITableViewDataSource {
 		if indexPath.row == 2 {
 			let leaderBoardBanner = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
 			leaderBoardBanner?.asBanner()
+			leaderBoardBanner?.hideButton()
 			return leaderBoardBanner ?? UITableViewCell()
 		}
 		
@@ -148,7 +150,9 @@ extension CommunityViewController: UITableViewDataSource {
 		}
 		
 		if indexPath.row > 3 && indexPath.row < 9 {
-			return tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath)
+			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
+			cell?.hideButton()
+			return cell ?? UITableViewCell()
 		}
 		
 		if indexPath.row == 9 {
@@ -177,5 +181,10 @@ extension CommunityViewController {
 	@objc
 	func leaderButtonTapped() {
 		presenter?.didTapLeaderBoard()
+	}
+	
+	@objc
+	func battleBannerButtonTapped() {
+		presenter?.battleBannerButtonTapped()
 	}
 }

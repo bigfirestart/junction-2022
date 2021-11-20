@@ -11,6 +11,7 @@ protocol CommunityPresenterProtocol {
 	init(router: RouterProtocol, view: UIViewController)
 	
 	func didTapLeaderBoard()
+	func battleBannerButtonTapped()
 }
 
 final class CommunityPresenter: CommunityPresenterProtocol {
@@ -24,6 +25,10 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 	
 	func didTapLeaderBoard() {
 		router?.moduleWantsToOpenLeaderboard() 
+	}
+	
+	func battleBannerButtonTapped() {
+		router?.moduleWantsToOpenBattleScreen()
 	}
 	
 }

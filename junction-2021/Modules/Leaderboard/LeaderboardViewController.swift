@@ -11,7 +11,7 @@ class LeaderboardViewController: UIViewController {
 	var presenter: LeaderboardPresenterProtocol?
 	
 	private enum Constants {
-		static let tableCell = String(describing: LeaderBoardWithActionCell.self)
+		static let tableCell = String(describing: LeaderBoardCell.self)
 		static let spaceReuseId = String(describing: SpaceCell.self)
 	}
 	
@@ -21,7 +21,7 @@ class LeaderboardViewController: UIViewController {
 		table.dataSource = self
 		table.register(SpaceCell.self, forCellReuseIdentifier: Constants.spaceReuseId)
 		
-		table.register(UINib(resource: R.nib.leaderBoardWithActionCell), forCellReuseIdentifier: Constants.tableCell)
+		table.register(UINib(resource: R.nib.leaderBoardCell), forCellReuseIdentifier: Constants.tableCell)
 		return table
 	}()
 	
@@ -64,7 +64,19 @@ extension LeaderboardViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return tableView.dequeueReusableCell(withIdentifier: Constants.tableCell, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableCell, for: indexPath) as? LeaderBoardCell
+		if indexPath.row == 2 {
+			cell?.colorBackground(with: .orange)
+		}
+		
+		if indexPath.row == 5 {
+			cell?.colorBackground(with: .blue)
+		}
+		
+		if indexPath.row == 10 {
+			cell?.colorBackground(with: .grey)
+		}
+		return cell ?? UITableViewCell()
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {

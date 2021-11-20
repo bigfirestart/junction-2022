@@ -20,4 +20,3 @@ final class BattlePresenter: BattlePresenterProtocol {
 		self.router = router
 	}
 }
-
