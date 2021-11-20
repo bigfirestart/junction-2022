@@ -28,10 +28,9 @@ final class CoursePresenter: CoursePresenterProtocol {
         networkService.stages { [weak self] result in
             switch result {
             case .success(let data):
-                print(data)
                 self?.view?.setState(with: .data(data))
-            case .failure(let error):
-                print("error")
+            case .failure:
+                self?.view?.setState(with: .loading)
             }
         }
     }
