@@ -136,6 +136,9 @@
 				4467DEE427483F510094DBF7 /* StageTableViewCell.swift */,
 				4467DEE527483F510094DBF7 /* StageTableViewCell.xib */,
 				4467DEE627483F510094DBF7 /* TeamTableViewCell.swift */,
+				4467DEC3274837F70094DBF7 /* SpaceCell.swift */,
+				4467DF1F274876390094DBF7 /* ButtonCell.swift */,
+				4467DF20274876390094DBF7 /* ButtonCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 		44D47E032745941600709885 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D3E499B22749312E00B9D58C /* Common */,
 				4467DF26274881AE0094DBF7 /* Battle */,
 				4467DF25274881970094DBF7 /* Leaderboard */,
 				D3E499A227484B5F00B9D58C /* Tasks */,
@@ -304,10 +308,9 @@
 		D3E499742747BE6100B9D58C /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				D3E499772747C14F00B9D58C /* CourseViewController.swift */,
-				D3E499872747F24A00B9D58C /* Cell */,
 				D3E499862747F24300B9D58C /* Protocols */,
 				44EA0CA32747B329005CE7D6 /* DesignSystem.swift */,
+				D3E499772747C14F00B9D58C /* CourseViewController.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -327,8 +330,6 @@
 		D3E499762747C13E00B9D58C /* Course */ = {
 			isa = PBXGroup;
 			children = (
-				4467DEEC27483F5B0094DBF7 /* HeaderFooter */,
-				4467DEE227483F510094DBF7 /* Cell */,
 				D3E499792747C15A00B9D58C /* CoursePresenter.swift */,
 				D3E4997B2747C16400B9D58C /* CourseModel.swift */,
 			);
@@ -341,16 +342,6 @@
 				D3E499842747F18200B9D58C /* PressAnimatable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		D3E499872747F24A00B9D58C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				4467DEC3274837F70094DBF7 /* SpaceCell.swift */,
-				4467DF1F274876390094DBF7 /* ButtonCell.swift */,
-				4467DF20274876390094DBF7 /* ButtonCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		D3E499A227484B5F00B9D58C /* Tasks */ = {
@@ -370,6 +361,15 @@
 				D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D3E499B22749312E00B9D58C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4467DEE227483F510094DBF7 /* Cell */,
+				4467DEEC27483F5B0094DBF7 /* HeaderFooter */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
