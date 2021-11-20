@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TasksViewControllerProtocol: AnyObject {
-
+    func setTeamState(with: TasksViewController.TeamState)
 }
 
 class TasksViewController: UIViewController {
@@ -21,6 +21,17 @@ class TasksViewController: UIViewController {
         static let taskReuseId = String(describing: TaskTableViewCell.self)
         static let spacingReuseId = String(describing: SpacingWithRoundTopBottomCell.self)
         static let tableViewContentInset = UIEdgeInsets(top: 45, left: 0, bottom: 16, right: 0)
+    }
+
+    var teamState: TeamState = .loading {
+        didSet {
+            tableView.reloadSections(.init(integer: 0), with: .fade)
+        }
+    }
+
+    enum TeamState {
+        case loading
+        case data(TeamResponse)
     }
     
     private lazy var tableView: UITableView = {
@@ -41,7 +52,11 @@ class TasksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         setupView()
+        presenter?.viewDidloadEvent()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,13 +67,35 @@ class TasksViewController: UIViewController {
         }
     }
 
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if additionalSafeAreaInsets.bottom == 0 {
+                UIView.animate(withDuration: 1) {
+                    self.additionalSafeAreaInsets.bottom += keyboardSize.height
+                    self.view.layoutIfNeeded()
+                }
+
+            }
+
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if additionalSafeAreaInsets.bottom != 0 {
+            UIView.animate(withDuration: 1) {
+                self.additionalSafeAreaInsets.bottom = 0
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
     private func setupView() {
         view.addSubview(tableView)
 
         title = "Tasks"
         view.backgroundColor = .appBackground()
 
-//        hideKeyboardOnTap()
+        hideKeyboardOnTap()
 
         setupTable()
     }
@@ -75,7 +112,9 @@ class TasksViewController: UIViewController {
 }
 
 extension TasksViewController: TasksViewControllerProtocol {
-    
+    func setTeamState(with state: TeamState) {
+        teamState = state
+    }
 }
 
 extension TasksViewController: UITableViewDelegate {
@@ -101,8 +140,22 @@ extension TasksViewController: UITableViewDataSource {
         let row = indexPath.row
         
         if section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath)
-            return cell
+            switch teamState {
+            case .data(let team):
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath) as? TeamTableViewCell else {
+                    print("🟥 Could not dequeue cell: \(Constants.teamReuseId)")
+                    return UITableViewCell()
+                }
+                cell.configure(with: .data(.init(teamName: team.name, points: Float(team.points) / 10)))
+                return cell
+            case .loading:
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath) as? TeamTableViewCell else {
+                    print("🟥 Could not dequeue cell: \(Constants.teamReuseId)")
+                    return UITableViewCell()
+                }
+                cell.configure(with: .loading)
+                return cell
+            }
         } else if section == 1 {
             if row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.taskReuseId, for: indexPath)

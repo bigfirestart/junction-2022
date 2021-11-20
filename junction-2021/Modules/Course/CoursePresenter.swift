@@ -9,7 +9,7 @@ import Foundation
 
 protocol CoursePresenterProtocol: AnyObject {
     func viewDidLoadEvent()
-    func didTapStage()
+    func didTapStage(with: StagesResponse)
 }
 
 final class CoursePresenter: CoursePresenterProtocol {
@@ -30,7 +30,7 @@ final class CoursePresenter: CoursePresenterProtocol {
             case .success(let data):
                 self?.view?.setStageState(with: .data(data))
             case .failure:
-                self?.view?.setTeamState(with: .loading)
+                self?.view?.setStageState(with: .loading)
             }
         }
 
@@ -44,7 +44,7 @@ final class CoursePresenter: CoursePresenterProtocol {
         }
     }
 
-    func didTapStage() {
-        router.moduleWantsToOpenTasks()
+    func didTapStage(with data: StagesResponse) {
+        router.moduleWantsToOpenTasks(with: data.id)
     }
 }

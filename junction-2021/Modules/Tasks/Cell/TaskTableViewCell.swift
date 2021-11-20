@@ -59,7 +59,7 @@ class TaskTableViewCell: UITableViewCell {
 
         textFieldWrapperView.layer.cornerRadius = 10
         textFieldWrapperView.layer.borderWidth = 1
-        textFieldWrapperView.layer.borderColor = UIColor.gray.cgColor
+        textFieldWrapperView.layer.borderColor = UIColor.inputBorder().cgColor
 
         selectionStyle = .none
     }

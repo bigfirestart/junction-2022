@@ -119,6 +119,32 @@ final class NetworkService: NetworkServiceProtocol {
             completion(.success(value))
         }
     }
+
+    func tasks(completion: @escaping (Result<TasksRespnse, Error>) -> Void) {
+
+    }
+}
+
+struct TasksRespnse {
+//    {
+//    "id": 0,
+//    "stageId": 0,
+//    "name": "string",
+//    "description": "string",
+//    "index": 0,
+//    "blocks": [
+//    {
+//    "id": 0,
+//    "content": "string",
+//    "type": "TEXT",
+//    "index": 0
+//    }
+//    ]
+//    }
+
+    let id: Int
+    let stageId: Int
+    let name: String
 }
 
 struct TeamResponse: Decodable {

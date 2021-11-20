@@ -59,6 +59,7 @@
 		D3E499AF274922BF00B9D58C /* SpacingWithRoundTopBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */; };
 		D3E499B12749305D00B9D58C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E499B02749305D00B9D58C /* Assets.xcassets */; };
 		D3E499B427494A1800B9D58C /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499B327494A1800B9D58C /* LoadingCell.swift */; };
+		D3E499B62749690F00B9D58C /* UIViewController+hideViewOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499B52749690F00B9D58C /* UIViewController+hideViewOnTap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingWithRoundTopBottomCell.swift; sourceTree = "<group>"; };
 		D3E499B02749305D00B9D58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3E499B327494A1800B9D58C /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		D3E499B52749690F00B9D58C /* UIViewController+hideViewOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+hideViewOnTap.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 				D3E499822747DA0500B9D58C /* CALayer+applyFigmaShadow.swift */,
 				4467DF3427488A260094DBF7 /* Navigation+Icon.swift */,
 				4467DF692749354D0094DBF7 /* AvatarFactory.swift */,
+				D3E499B52749690F00B9D58C /* UIViewController+hideViewOnTap.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				4467DEEA27483F510094DBF7 /* TeamTableViewCell.swift in Sources */,
 				44D47E622746CD5800709885 /* AuthModel.swift in Sources */,
 				4467DEC4274837F70094DBF7 /* SpaceCell.swift in Sources */,
+				D3E499B62749690F00B9D58C /* UIViewController+hideViewOnTap.swift in Sources */,
 				4467DEEF27483F5B0094DBF7 /* TitleWithRoundTopHeader.swift in Sources */,
 				D3E499852747F18200B9D58C /* PressAnimatable.swift in Sources */,
 			);

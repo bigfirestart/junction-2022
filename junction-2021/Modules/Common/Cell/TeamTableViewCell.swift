@@ -44,8 +44,8 @@ class TeamTableViewCell: UITableViewCell, PressAnimatable {
         wrapperView.backgroundColor = .white
         wrapperView.layer.cornerRadius = 14
         wrapperView.layer.applyFigmaShadow(color: .shadow(), x: 0, y: 4, blur: 8, spread: 0)
-
-        iconImageView.backgroundColor = .gray
+        
+        iconImageView.setRounded()
 
         teamNameLabel.text = "Team name"
         teamNameLabel.font = .systemFont(ofSize: 15, weight: .semibold)
@@ -64,6 +64,7 @@ class TeamTableViewCell: UITableViewCell, PressAnimatable {
         case .data(let model):
             teamNameLabel.text = model.teamName
             pointsCountLabel.text = String(model.points)
+            iconImageView.image = AvatarFactory.getUserAvatar()
 
             iconImageView.isHidden = false
             teamNameLabel.isHidden = false
