@@ -16,6 +16,7 @@ final class CommunityViewController: UIViewController {
 		static let teamReuseId = String(describing: TeamTableViewCell.self)
 		static let titleReuseId = String(describing: TitileCell.self)
 		static let topLeaderBoardReuseId = String(describing: LeaderBoardCell.self)
+		static let tableButton = String(describing: ButtonCell.self)
 	}
 	
 	private lazy var tableView: UITableView = {
@@ -26,6 +27,7 @@ final class CommunityViewController: UIViewController {
 		table.register(SpaceCell.self, forCellReuseIdentifier: Constants.spaceReuseId)
 		table.register(UINib(resource: R.nib.teamTableViewCell), forCellReuseIdentifier: Constants.teamReuseId)
 		table.register(TitileCell.self, forCellReuseIdentifier: Constants.titleReuseId)
+		table.register(UINib(resource: R.nib.buttonCell), forCellReuseIdentifier: Constants.tableButton)
 		table.register(UINib(resource: R.nib.leaderBoardCell), forCellReuseIdentifier: Constants.topLeaderBoardReuseId)
 		
 		return table
@@ -58,7 +60,6 @@ final class CommunityViewController: UIViewController {
 		tableView.separatorStyle = .none
 		tableView.contentInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
 	}
-	
 }
 
 extension CommunityViewController: UITableViewDelegate {
@@ -83,7 +84,7 @@ extension CommunityViewController: UITableViewDataSource {
 			return 4
 		}
 		if section == 1 {
-			return 9
+			return 11
 		}
 		return 0
 	}
@@ -146,8 +147,19 @@ extension CommunityViewController: UITableViewDataSource {
 			return space(cellForRowAt: indexPath, height: 30)
 		}
 		
-		if indexPath.row > 3 {
+		if indexPath.row > 3 && indexPath.row < 9 {
 			return tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath)
+		}
+		
+		if indexPath.row == 9 {
+			let buttonCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableButton, for: indexPath) as? ButtonCell
+			buttonCell?.withLabel(text: "Show more")
+			buttonCell?.button.addTarget(self, action: #selector(leaderButtonTapped), for: .touchDown)
+			return buttonCell ?? UITableViewCell()
+		}
+		
+		if indexPath.row == 10 {
+			return space(cellForRowAt: indexPath, height: 100)
 		}
 		
 		return UITableViewCell()
@@ -157,5 +169,13 @@ extension CommunityViewController: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: Constants.spaceReuseId, for: indexPath) as? SpaceCell
 		cell?.withHeight(height: CGFloat(height))
 		return cell ?? UITableViewCell()
+	}
+}
+
+// taps
+extension CommunityViewController {
+	@objc
+	func leaderButtonTapped() {
+		presenter?.didTapLeaderBoard()
 	}
 }

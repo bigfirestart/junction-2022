@@ -1,19 +1,17 @@
 //
-//  CommunityPresenter.swift
+//  BattlePresenter.swift
 //  junction-2021
 //
-//  Created by k.lukyanov on 19.11.2021.
+//  Created by k.lukyanov on 20.11.2021.
 //
 
 import UIKit
 
-protocol CommunityPresenterProtocol {
+protocol BattlePresenterProtocol {
 	init(router: RouterProtocol, view: UIViewController)
-	
-	func didTapLeaderBoard()
 }
 
-final class CommunityPresenter: CommunityPresenterProtocol {
+final class BattlePresenter: BattlePresenterProtocol {
 	private weak var view: UIViewController?
 	private let router: RouterProtocol?
 	
@@ -21,9 +19,5 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 		self.view = view
 		self.router = router
 	}
-	
-	func didTapLeaderBoard() {
-		router?.moduleWantsToOpenLeaderboard() 
-	}
-	
 }
+

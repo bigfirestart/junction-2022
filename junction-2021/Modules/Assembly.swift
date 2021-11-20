@@ -12,6 +12,7 @@ protocol AssemblyProtocol: AnyObject {
     func createAuthScreen(router: RouterProtocol, container: Container) -> UIViewController
     func createAuthorizedScreens(router: RouterProtocol, container: Container) -> (tab: UITabBarController, course: UINavigationController, community: UINavigationController)
     func createTasksScreen(router: RouterProtocol, container: Container) -> UIViewController
+	func createLeaderboardScreen(router: RouterProtocol, container: Container) -> UIViewController
 }
 
 final class Assembly: AssemblyProtocol {
@@ -30,6 +31,7 @@ final class Assembly: AssemblyProtocol {
 		courseView.presenter = coursePresenter
 		
         let courseNavigationController = UINavigationController()
+		courseNavigationController.makeAppCustomNavigationBar()
         courseNavigationController.navigationBar.prefersLargeTitles = true
         courseNavigationController.pushViewController(courseView, animated: false)
         let courseItem = UITabBarItem(title: "Course", image: R.image.tabBarCourses(), selectedImage: R.image.tabBarCourses())
@@ -41,6 +43,7 @@ final class Assembly: AssemblyProtocol {
 		communityView.presenter = communityPresenter
 		
 		let communityNavigationController = UINavigationController()
+		communityNavigationController.makeAppCustomNavigationBar()
 		communityNavigationController.navigationBar.prefersLargeTitles = true
 		communityNavigationController.pushViewController(communityView, animated: false)
 		let communityItem = UITabBarItem(title: "Community", image: R.image.tabBarCommunity(), selectedImage: R.image.tabBarCommunity())
@@ -61,4 +64,12 @@ final class Assembly: AssemblyProtocol {
 
         return tasksViewController
     }
+	
+	func createLeaderboardScreen(router: RouterProtocol, container: Container) -> UIViewController {
+		let leaderboardViewController = LeaderboardViewController()
+		let leaderboardPresenter = LeaderboardPresenter(router: router, view: leaderboardViewController)
+		leaderboardViewController.presenter = leaderboardPresenter
+
+		return leaderboardViewController
+	}
 }
