@@ -8,21 +8,29 @@ import Alamofire
 
 protocol NetworkServiceProtocol {
 	func auth(authModel: AuthModel, complition: @escaping (Result<String, Error>) -> Void)
+    func stages(completion: @escaping (Result<[StagesResponse], Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
-	private let host = "http://home.kuzznya.space"
+	private let host = "http://home.kuzznya.space/api/v1"
+    private let tokenManager: TokenManagerProtocol
 	
 	enum AppUrl: String {
-		case auth
+		case auth, stages
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
-			case .auth:
-				return host + "/authentication"
+            case .auth:
+                return host + "/authentication"
+            case .stages:
+                return host + "/courses/current/stages"
 			}
 		}
 	}
+
+    init(tokenManager: TokenManagerProtocol) {
+        self.tokenManager = tokenManager
+    }
 	
 	func auth(authModel: AuthModel, complition: @escaping (Result<String, Error>) -> Void) {
 		let url = AppUrl.auth.absoluteUrl(host: self.host)
@@ -46,6 +54,27 @@ final class NetworkService: NetworkServiceProtocol {
 		}
 	}
 
+    func stages(completion: @escaping (Result<[StagesResponse], Error>) -> Void) {
+        let url = AppUrl.stages.absoluteUrl(host: host)
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(tokenManager.get()!)")
+        let headers = HTTPHeaders([header])
+
+        let request = AF.request(url, headers: headers)
+        request.responseDecodable(of: [StagesResponse].self) { res in
+            guard let value = res.value else { return }
+
+            completion(.success(value))
+        }
+    }
+
+}
+
+struct StagesResponse: Decodable {
+    let id: Int
+    let name: String
+    let description: String
+    let status: String
 }
 
 struct AuthResponse: Decodable {

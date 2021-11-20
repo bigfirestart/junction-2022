@@ -12,3 +12,9 @@ extension Container {
         resolve(Service.self)!
     }
 }
+
+extension Resolver {
+    func resolve<Service>() -> Service {
+        resolve(Service.self)!
+    }
+}
