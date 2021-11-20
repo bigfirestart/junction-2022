@@ -9,5 +9,6 @@ target 'junction-2021' do
   pod 'Alamofire'
   pod 'Swinject'
   pod 'R.swift'
+  pod 'StepIndicator', '~> 1.0.8'
 
 end

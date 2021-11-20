@@ -11,8 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BattleViewController" customModule="junction_2021" customModuleProvider="target">
             <connections>
+                <outlet property="enemyProgress" destination="0PV-DJ-Ld7" id="4Wx-2E-lge"/>
                 <outlet property="rullesBanner" destination="Mro-cc-CEa" id="DXS-si-EIC"/>
                 <outlet property="rullesBannerLabel" destination="Adi-Q3-kAS" id="ZXw-gX-3zf"/>
+                <outlet property="userProgress" destination="h0f-VF-Szv" id="gHx-Gj-RsC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,15 +31,87 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvV-Sj-gIA">
                     <rect key="frame" x="0.0" y="224" width="207" height="672"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARb-a7-woK">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARb-a7-woK">
                             <rect key="frame" x="45" y="74" width="100" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0f-VF-Szv" customClass="StepIndicatorView" customModule="StepIndicator">
+                            <rect key="frame" x="87" y="127" width="20" height="402"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fey-J6-sJ2" customClass="StepIndicatorView" customModule="StepIndicator">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="403"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="currentStep">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                            <real key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="directionRaw">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="displayNumbers" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                            <color key="value" systemColor="systemGrayColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                            <color key="value" systemColor="systemGray2Color"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="lineTintColor">
+                                            <color key="value" systemColor="systemOrangeColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="circleTintColor">
+                                            <color key="value" systemColor="systemOrangeColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="currentStep">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="directionRaw">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="displayNumbers" value="NO"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                    <color key="value" systemColor="systemGrayColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                    <color key="value" systemColor="systemGray2Color"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="lineTintColor">
+                                    <color key="value" systemColor="systemOrangeColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="circleTintColor">
+                                    <color key="value" systemColor="systemOrangeColor"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="h0f-VF-Szv" firstAttribute="leading" secondItem="qvV-Sj-gIA" secondAttribute="leading" constant="87" id="DXE-Rd-GYJ"/>
+                        <constraint firstAttribute="trailing" secondItem="h0f-VF-Szv" secondAttribute="trailing" constant="100" id="dLI-mj-ka1"/>
+                        <constraint firstAttribute="trailing" secondItem="ARb-a7-woK" secondAttribute="trailing" constant="62" id="ewA-WO-NaI"/>
+                        <constraint firstAttribute="bottom" secondItem="h0f-VF-Szv" secondAttribute="bottom" constant="143" id="gfi-uR-The"/>
+                        <constraint firstItem="h0f-VF-Szv" firstAttribute="top" secondItem="ARb-a7-woK" secondAttribute="bottom" constant="29" id="oUU-UM-crU"/>
+                        <constraint firstItem="ARb-a7-woK" firstAttribute="top" secondItem="qvV-Sj-gIA" secondAttribute="top" constant="74" id="sRG-ux-cz5"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bco-81-sMa">
                     <rect key="frame" x="207" y="224" width="207" height="672"/>
@@ -55,12 +129,81 @@
                                 <constraint firstAttribute="height" constant="40" id="bPH-Nr-k7g"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PV-DJ-Ld7" customClass="StepIndicatorView" customModule="StepIndicator">
+                            <rect key="frame" x="87" y="126" width="20" height="403"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOX-nG-Ig8" customClass="StepIndicatorView" customModule="StepIndicator">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="403"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="currentStep">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                            <real key="value" value="16"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="directionRaw">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="displayNumbers" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                            <color key="value" systemColor="systemGrayColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                            <color key="value" systemColor="systemGray2Color"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="lineTintColor">
+                                            <color key="value" systemColor="systemOrangeColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="circleTintColor">
+                                            <color key="value" systemColor="systemOrangeColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="currentStep">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="directionRaw">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="displayNumbers" value="NO"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                                    <color key="value" systemColor="systemGrayColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                    <color key="value" systemColor="systemGray2Color"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="lineTintColor">
+                                    <color key="value" systemColor="systemOrangeColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="circleTintColor">
+                                    <color key="value" systemColor="systemOrangeColor"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="0PV-DJ-Ld7" secondAttribute="bottom" constant="143" id="2zC-p1-8po"/>
+                        <constraint firstItem="0PV-DJ-Ld7" firstAttribute="top" secondItem="Xao-BA-3hY" secondAttribute="bottom" constant="27" id="Sh1-uw-vdE"/>
                         <constraint firstItem="ovy-Tc-z7P" firstAttribute="leading" secondItem="bco-81-sMa" secondAttribute="leading" constant="-19" id="f2U-mm-tkM"/>
                         <constraint firstItem="ovy-Tc-z7P" firstAttribute="top" secondItem="bco-81-sMa" secondAttribute="top" constant="67" id="fNj-yt-MHx"/>
+                        <constraint firstItem="0PV-DJ-Ld7" firstAttribute="leading" secondItem="bco-81-sMa" secondAttribute="leading" constant="87" id="fgm-Az-CeG"/>
                         <constraint firstItem="Xao-BA-3hY" firstAttribute="top" secondItem="bco-81-sMa" secondAttribute="top" constant="75" id="oDb-rP-po1"/>
+                        <constraint firstAttribute="trailing" secondItem="0PV-DJ-Ld7" secondAttribute="trailing" constant="100" id="xYR-Ub-etZ"/>
                         <constraint firstItem="Xao-BA-3hY" firstAttribute="leading" secondItem="bco-81-sMa" secondAttribute="leading" constant="50" id="zdA-I6-b5M"/>
                     </constraints>
                 </view>
@@ -98,6 +241,12 @@
                         <constraint firstAttribute="height" constant="239" id="xo9-ko-Gn1"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" id="9rF-7w-EYR">
+                    <rect key="frame" x="0.0" y="279" width="414" height="617"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="tqg-Fz-A4r"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -113,6 +262,7 @@
                 <constraint firstItem="qvV-Sj-gIA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gij-bl-fPg"/>
                 <constraint firstItem="1PB-cz-qlt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ouh-2p-RJm"/>
                 <constraint firstItem="qvV-Sj-gIA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.75" id="ydc-H5-oOH"/>
+                <constraint firstItem="9rF-7w-EYR" firstAttribute="top" secondItem="1PB-cz-qlt" secondAttribute="bottom" constant="40" id="zDh-XM-FyG"/>
                 <constraint firstItem="1PB-cz-qlt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ze7-KV-nU1"/>
             </constraints>
             <point key="canvasLocation" x="-139.13043478260872" y="54.910714285714285"/>
@@ -122,6 +272,15 @@
         <image name="Image" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

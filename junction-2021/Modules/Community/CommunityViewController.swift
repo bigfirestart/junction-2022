@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CommunityViewControllerProtocol: AnyObject {
+	func setState(with: CommunityViewController.State)
+}
+
 final class CommunityViewController: UIViewController {
 	var presenter: CommunityPresenterProtocol?
 	
@@ -17,6 +21,18 @@ final class CommunityViewController: UIViewController {
 		static let titleReuseId = String(describing: TitileCell.self)
 		static let topLeaderBoardReuseId = String(describing: LeaderBoardCell.self)
 		static let tableButton = String(describing: ButtonCell.self)
+		static let loaderReuseId = String(describing: LoadingCell.self)
+	}
+	
+	enum State {
+		case loading
+		case data([LeaderboardResponse])
+	}
+	
+	var state: State = .loading {
+		didSet {
+			tableView.reloadData()
+		}
 	}
 	
 	private lazy var tableView: UITableView = {
@@ -29,6 +45,7 @@ final class CommunityViewController: UIViewController {
 		table.register(TitileCell.self, forCellReuseIdentifier: Constants.titleReuseId)
 		table.register(UINib(resource: R.nib.buttonCell), forCellReuseIdentifier: Constants.tableButton)
 		table.register(UINib(resource: R.nib.leaderBoardCell), forCellReuseIdentifier: Constants.topLeaderBoardReuseId)
+		table.register(LoadingCell.self, forCellReuseIdentifier: Constants.loaderReuseId)
 		
 		return table
 	}()
@@ -38,6 +55,7 @@ final class CommunityViewController: UIViewController {
 		self.view.backgroundColor = .appBackground()
 		
 		setupTable()
+		presenter?.viewDidLoadEvent()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +94,7 @@ extension CommunityViewController: UITableViewDelegate {
 
 extension CommunityViewController: UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
-		2
+		3
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,7 +102,15 @@ extension CommunityViewController: UITableViewDataSource {
 			return 4
 		}
 		if section == 1 {
-			return 11
+			return 4
+		}
+		if section == 2 {
+			switch state {
+			case .data(let leaderboard):
+				return 2 + leaderboard.count
+			case .loading:
+				return 2
+			}
 		}
 		return 0
 	}
@@ -95,7 +121,10 @@ extension CommunityViewController: UITableViewDataSource {
 			return bannerSection(cellForRowAt: indexPath)
 		}
 		if section == 1 {
-			return leaderBoardSection(cellForRowAt: indexPath)
+			return leaderBoardPre(cellForRowAt: indexPath)
+		}
+		if section == 2 {
+			return leaderBoard(cellForRowAt: indexPath)
 		}
 		
 		return UITableViewCell()
@@ -129,7 +158,7 @@ extension CommunityViewController: UITableViewDataSource {
 		return UITableViewCell()
 	}
 	
-	func leaderBoardSection(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func leaderBoardPre(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row == 0 {
 			return tableView.dequeueReusableCell(withIdentifier: Constants.titleReuseId, for: indexPath)
 		}
@@ -148,24 +177,46 @@ extension CommunityViewController: UITableViewDataSource {
 		if indexPath.row == 3 {
 			return space(cellForRowAt: indexPath, height: 30)
 		}
-		
-		if indexPath.row > 3 && indexPath.row < 9 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
-			cell?.commandLogo.image = AvatarFactory.getRandomAvatar()
-			return cell ?? UITableViewCell()
+		return UITableViewCell()
+	}
+	
+	func leaderBoard(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		switch state {
+		case .data(let leaderboard):
+			if indexPath.row < leaderboard.count {
+				// leaderboard
+				guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell else {
+					return UITableViewCell()
+				}
+
+				cell.configure(model: leaderboard[indexPath.row])
+				return cell
+			}
+			if indexPath.row == leaderboard.count {
+				let buttonCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableButton, for: indexPath) as? ButtonCell
+				buttonCell?.withLabel(text: "Show more")
+				buttonCell?.button.addTarget(self, action: #selector(leaderButtonTapped), for: .touchDown)
+				return buttonCell ?? UITableViewCell()
+			}
+			if indexPath.row == leaderboard.count + 1 {
+				return space(cellForRowAt: indexPath, height: 100)
+			}
+		case .loading:
+			// 3 cells
+			if indexPath.row == 0 {
+				return tableView.dequeueReusableCell(withIdentifier: Constants.loaderReuseId, for: indexPath)
+			}
+			
+			if indexPath.row == 1 {
+				let buttonCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableButton, for: indexPath) as? ButtonCell
+				buttonCell?.withLabel(text: "Show more")
+				buttonCell?.button.addTarget(self, action: #selector(leaderButtonTapped), for: .touchDown)
+				return buttonCell ?? UITableViewCell()
+			}
+			if indexPath.row == 2 {
+				return space(cellForRowAt: indexPath, height: 100)
+			}
 		}
-		
-		if indexPath.row == 9 {
-			let buttonCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableButton, for: indexPath) as? ButtonCell
-			buttonCell?.withLabel(text: "Show more")
-			buttonCell?.button.addTarget(self, action: #selector(leaderButtonTapped), for: .touchDown)
-			return buttonCell ?? UITableViewCell()
-		}
-		
-		if indexPath.row == 10 {
-			return space(cellForRowAt: indexPath, height: 100)
-		}
-		
 		return UITableViewCell()
 	}
 	
@@ -186,5 +237,11 @@ extension CommunityViewController {
 	@objc
 	func battleBannerButtonTapped() {
 		presenter?.battleBannerButtonTapped()
+	}
+}
+
+extension CommunityViewController: CommunityViewControllerProtocol {
+	func setState(with state: State) {
+		self.state = state
 	}
 }

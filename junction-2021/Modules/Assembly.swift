@@ -40,7 +40,7 @@ final class Assembly: AssemblyProtocol {
 		
 		// Community
 		let communityView = CommunityViewController()
-		let communityPresenter = CommunityPresenter(router: router, view: courseView)
+		let communityPresenter = CommunityPresenter(router: router, view: communityView, networkService: container.resolve())
 		communityView.presenter = communityPresenter
 		
 		let communityNavigationController = UINavigationController()

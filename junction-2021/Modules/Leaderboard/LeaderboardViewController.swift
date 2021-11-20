@@ -91,7 +91,6 @@ extension LeaderboardViewController: UITableViewDataSource {
 		switch state {
 		case .data(let leaderboard):
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableCell, for: indexPath) as? LeaderBoardCell else {
-				print("🟥 Could not dequeue cell: \(Constants.tableCell)")
 				return UITableViewCell()
 			}
 
