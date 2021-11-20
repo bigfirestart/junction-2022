@@ -42,7 +42,7 @@ class LeaderBoardCell: UITableViewCell {
 		numberLabel.font = .systemFont(ofSize: 22, weight: .bold)
 		
 		higlihtedBackgroundView.backgroundColor = .appModal()
-		
+		commandLogo.image = AvatarFactory.getRandomAvatar()
 		commandLogo.setRounded()
 	}
 	
