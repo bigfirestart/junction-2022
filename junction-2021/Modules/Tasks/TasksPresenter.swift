@@ -33,5 +33,14 @@ extension TasksPresenter: TasksPresenterProtocol {
                 self?.view?.setTeamState(with: .loading)
             }
         }
+
+        networkService.tasks(stageId: id) { [weak self] result in
+            switch result {
+            case .success(let tasks):
+                self?.view?.setTasksState(with: .data(tasks))
+            case .failure:
+                self?.view?.setTasksState(with: .loading)
+            }
+        }
     }
 }
