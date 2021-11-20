@@ -58,6 +58,7 @@
 		D3E499AB27486A1700B9D58C /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */; };
 		D3E499AF274922BF00B9D58C /* SpacingWithRoundTopBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */; };
 		D3E499B12749305D00B9D58C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E499B02749305D00B9D58C /* Assets.xcassets */; };
+		D3E499B427494A1800B9D58C /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E499B327494A1800B9D58C /* LoadingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		D3E499A927486A1700B9D58C /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		D3E499AE274922BE00B9D58C /* SpacingWithRoundTopBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacingWithRoundTopBottomCell.swift; sourceTree = "<group>"; };
 		D3E499B02749305D00B9D58C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3E499B327494A1800B9D58C /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				4467DEC3274837F70094DBF7 /* SpaceCell.swift */,
 				4467DF1F274876390094DBF7 /* ButtonCell.swift */,
 				4467DF20274876390094DBF7 /* ButtonCell.xib */,
+				D3E499B327494A1800B9D58C /* LoadingCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E499B427494A1800B9D58C /* LoadingCell.swift in Sources */,
 				D3E499782747C14F00B9D58C /* CourseViewController.swift in Sources */,
 				4467DF4E27489E480094DBF7 /* LeaderBoardCell.swift in Sources */,
 				D3E4997C2747C16400B9D58C /* CourseModel.swift in Sources */,

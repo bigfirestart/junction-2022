@@ -25,6 +25,7 @@ final class CourseViewController: UIViewController {
         static let stageReuseId = String(describing: StageTableViewCell.self)
         static let headerReuseId = String(describing: TitleWithRoundTopHeader.self)
         static let footerReuseId = String(describing: RoundFooter.self)
+        static let loaderReuseId = String(describing: LoadingCell.self)
         static let tableViewContentInset = UIEdgeInsets(top: 45, left: 0, bottom: 16, right: 0)
     }
 
@@ -39,6 +40,7 @@ final class CourseViewController: UIViewController {
         table.dataSource = self
         table.register(UINib(resource: R.nib.teamTableViewCell), forCellReuseIdentifier: Constants.teamReuseId)
         table.register(UINib(resource: R.nib.stageTableViewCell), forCellReuseIdentifier: Constants.stageReuseId)
+        table.register(LoadingCell.self, forCellReuseIdentifier: Constants.loaderReuseId)
 
         table.register(TitleWithRoundTopHeader.self, forHeaderFooterViewReuseIdentifier: Constants.headerReuseId)
         table.register(TitleWithRoundTopHeader.self, forHeaderFooterViewReuseIdentifier: Constants.footerReuseId)
@@ -107,7 +109,7 @@ extension CourseViewController: UITableViewDataSource {
         case .data(let stages):
             return stages.count
         case .loading:
-            return 0
+            return 1
         }
     }
 
@@ -132,7 +134,7 @@ extension CourseViewController: UITableViewDataSource {
                                         battleImage: indexPath.row == 0 ?  R.image.swordsIcon() : nil))
             return cell
         case .loading:
-            return UITableViewCell()
+            return tableView.dequeueReusableCell(withIdentifier: Constants.loaderReuseId, for: indexPath)
         }
     }
 
