@@ -42,6 +42,8 @@
 		44D47E622746CD5800709885 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D47E612746CD5800709885 /* AuthModel.swift */; };
 		44EA0C8A274798ED005CE7D6 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA0C89274798ED005CE7D6 /* KeyChainService.swift */; };
 		44EA0CA42747B329005CE7D6 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EA0CA32747B329005CE7D6 /* DesignSystem.swift */; };
+		D37F8FC62749EB4900A4387E /* CollabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F8FC42749EB4900A4387E /* CollabViewController.swift */; };
+		D37F8FC72749EB4900A4387E /* CollabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37F8FC52749EB4900A4387E /* CollabViewController.xib */; };
 		D3E4995127454E1400B9D58C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4995027454E1400B9D58C /* AppDelegate.swift */; };
 		D3E4996B27479F0C00B9D58C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4996A27479F0C00B9D58C /* R.generated.swift */; };
 		D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4996C2747A33600B9D58C /* InitialSetupService.swift */; };
@@ -100,6 +102,8 @@
 		479A8921060D6C8391494B89 /* Pods_junction_2021.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_junction_2021.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		878A5063ADDDB5D992C1CB02 /* Pods-junction-2021.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.debug.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.debug.xcconfig"; sourceTree = "<group>"; };
 		BE08C6A2579256E15282A39B /* Pods-junction-2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.release.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.release.xcconfig"; sourceTree = "<group>"; };
+		D37F8FC42749EB4900A4387E /* CollabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollabViewController.swift; sourceTree = "<group>"; };
+		D37F8FC52749EB4900A4387E /* CollabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollabViewController.xib; sourceTree = "<group>"; };
 		D3E4994D27454E1400B9D58C /* junction-2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "junction-2021.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E4995027454E1400B9D58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3E4995E27454E1600B9D58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 		44D47E032745941600709885 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D37F8FC32749EB1B00A4387E /* Collab */,
 				D3E499B22749312E00B9D58C /* Common */,
 				4467DF26274881AE0094DBF7 /* Battle */,
 				4467DF25274881970094DBF7 /* Leaderboard */,
@@ -259,6 +264,15 @@
 				BE08C6A2579256E15282A39B /* Pods-junction-2021.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D37F8FC32749EB1B00A4387E /* Collab */ = {
+			isa = PBXGroup;
+			children = (
+				D37F8FC42749EB4900A4387E /* CollabViewController.swift */,
+				D37F8FC52749EB4900A4387E /* CollabViewController.xib */,
+			);
+			path = Collab;
 			sourceTree = "<group>";
 		};
 		D3E4994427454E1400B9D58C = {
@@ -451,6 +465,7 @@
 				44D47DFF2745939D00709885 /* LaunchScreen.storyboard in Resources */,
 				D3E499B12749305D00B9D58C /* Assets.xcassets in Resources */,
 				4467DEE927483F510094DBF7 /* StageTableViewCell.xib in Resources */,
+				D37F8FC72749EB4900A4387E /* CollabViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +582,7 @@
 				D3E4996D2747A33600B9D58C /* InitialSetupService.swift in Sources */,
 				D3E499732747B6B900B9D58C /* TokenManager.swift in Sources */,
 				D3E499AF274922BF00B9D58C /* SpacingWithRoundTopBottomCell.swift in Sources */,
+				D37F8FC62749EB4900A4387E /* CollabViewController.swift in Sources */,
 				44D47E1727459F0F00709885 /* UIColor+Extension.swift in Sources */,
 				4467DF2C274881E20094DBF7 /* LeaderboardViewController.swift in Sources */,
 				44EA0C8A274798ED005CE7D6 /* KeyChainService.swift in Sources */,
