@@ -10,6 +10,8 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var wrapperView: UIView!
 
+    weak var view: TasksViewControllerProtocol?
+
     enum BlockType: String {
         case text = "TEXT"
         case question = "QUESTION"
@@ -34,6 +36,14 @@ class TaskTableViewCell: UITableViewCell {
             }
         }
     }
+
+    enum CellState {
+        case checkpoint, task, unknown
+    }
+
+    private var id: Int?
+    private var cellState: CellState = .unknown
+    private var idToTextfieldDictionary = [String: UITextField]()
 
     private var descriptionTextView: UITextView {
         let view = UITextView()
@@ -73,6 +83,7 @@ class TaskTableViewCell: UITableViewCell {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(didPressButton), for: .touchUpInside)
         return button
     }()
 
@@ -89,6 +100,15 @@ class TaskTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         setupView()
+    }
+
+    @objc private func didPressButton() {
+        if let id = id {
+            let dictToReturn: [String: String] = idToTextfieldDictionary.mapValues { value in
+                return value.text!
+            }
+            view?.didPressSubmit(isCheckpoint: cellState == .checkpoint, id: id, values: dictToReturn)
+        }
     }
 
     private func setupView() {
@@ -134,7 +154,7 @@ class TaskTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    private func generateQuestionView(for title: String) -> UIView {
+    private func generateQuestionView(for title: String) -> (view: UIView, textField: UITextField) {
         let wrapperView = UIView()
 
         let titleLabel = UILabel()
@@ -178,7 +198,7 @@ class TaskTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview()
         }
 
-        return wrapperView
+        return (wrapperView, textFieldView)
     }
 
     override func prepareForReuse() {
@@ -195,6 +215,8 @@ class TaskTableViewCell: UITableViewCell {
     }
 
     func configure(with model: TasksResponse.Task) {
+        id = model.id
+        cellState = .task
         titleLabel.text = model.name
 
         checkpointStatusImageView.isHidden = true
@@ -209,12 +231,16 @@ class TaskTableViewCell: UITableViewCell {
         let questionBlocks = model.blocks.sorted { $0.index < $1.index }.filter { BlockType(rawValue: $0.type) == .question }
         submitButton.isHidden = questionBlocks.isEmpty
         for block in questionBlocks {
-            let questionView = generateQuestionView(for: block.content)
+            let generated = generateQuestionView(for: block.content)
+            let questionView = generated.view
+            idToTextfieldDictionary[String(block.id)] = generated.textField
             questionStackView.addArrangedSubview(questionView)
         }
     }
 
     func configure(with model: TasksResponse.Checkpoint) {
+        id = model.id
+        cellState = .checkpoint
         let checkpointState = CheckpointState(rawValue: model.status)
 
         titleLabel.text = model.name
@@ -240,7 +266,9 @@ class TaskTableViewCell: UITableViewCell {
         let questionBlocks = model.blocks.sorted { $0.index < $1.index }.filter { BlockType(rawValue: $0.type) == .question }
         submitButton.isHidden = questionBlocks.isEmpty
         for block in questionBlocks {
-            let questionView = generateQuestionView(for: block.content)
+            let generated = generateQuestionView(for: block.content)
+            let questionView = generated.view
+            idToTextfieldDictionary[String(block.id)] = generated.textField
             questionStackView.addArrangedSubview(questionView)
         }
     }

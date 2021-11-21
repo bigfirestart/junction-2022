@@ -9,6 +9,7 @@ import Foundation
 
 protocol TasksPresenterProtocol: AnyObject {
     func viewDidloadEvent()
+    func didPressSubmit(isCheckpoint: Bool, id: Int, values: [String: String])
 }
 
 class TasksPresenter {
@@ -24,6 +25,10 @@ class TasksPresenter {
 }
 
 extension TasksPresenter: TasksPresenterProtocol {
+    func didPressSubmit(isCheckpoint: Bool, id: Int, values: [String : String]) {
+        networkService.submit(id: id, isCheckpoint: isCheckpoint, values: values)
+    }
+
     func viewDidloadEvent() {
         networkService.team { [weak self] result in
             switch result {

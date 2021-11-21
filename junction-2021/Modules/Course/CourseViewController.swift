@@ -106,6 +106,9 @@ extension CourseViewController: CourseViewControllerProtocol {
 
 extension CourseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            return
+        }
         if case let .data(stages) = stageState {
             presenter?.didTapStage(with: stages[indexPath.row])
         }
