@@ -12,7 +12,7 @@ protocol NetworkServiceProtocol {
 	func leaderboard(completion: @escaping (Result<[LeaderboardResponse], Error>) -> Void)
     func team(completion: @escaping (Result<TeamResponse, Error>) -> Void)
     func tasks(stageId: Int, completion: @escaping (Result<TasksResponse, Error>) -> Void)
-    func submit(id: Int, isCheckpoint: Bool, values: [String: String])
+    func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -158,7 +158,7 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
 
-    func submit(id: Int, isCheckpoint: Bool, values: [String: String]) {
+    func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void) {
         let url = AppUrl.submit(isCheckpoint ? .checkpoint(id) : .task(id)).absoluteUrl(host: host)
 
         guard let token = tokenManager.get() else {
@@ -168,10 +168,8 @@ final class NetworkService: NetworkServiceProtocol {
         let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
         let headers = HTTPHeaders([header])
 
-        print(values)
-
         AF.request(url, method: .post, parameters: values, encoding: JSONEncoding.default, headers: headers).response { res in
-            print(res)
+            completion()
         }
     }
 }
