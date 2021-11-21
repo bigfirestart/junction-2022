@@ -53,7 +53,8 @@ class LeaderBoardCell: UITableViewCell {
 	func configure(model: LeaderboardResponse) {
 		self.numberLabel.text = String(model.id) + "."
 		self.commandNameLabel.text = model.name
-		self.pointsLabel.text = String(model.points / 10)
+		let point: Float = Float(model.points) / Float(10)
+		self.pointsLabel.text = String(format: "%.1f", point)
 	}
 	
 	func colorBackground(with color: BackgroundColor) {
