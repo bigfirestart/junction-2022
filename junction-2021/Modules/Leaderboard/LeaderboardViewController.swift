@@ -113,13 +113,17 @@ extension LeaderboardViewController: UITableViewDataSource {
 	// swiftlint:disable
 	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 		let battleAction = UITableViewRowAction(style: .default, title: "Battle", handler: { (action, indexPath) in
-			print("Edit tapped")
+			let alert = UIAlertController(title: "Battle requested !", message: "Wait for opponent response", preferredStyle: UIAlertController.Style.alert)
+			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
 		})
 		battleAction.backgroundColor = .appAcentOrange()
 
 		// action two
 		let colabAction = UITableViewRowAction(style: .default, title: "Colab", handler: { (action, indexPath) in
-			print("Delete tapped")
+			let alert = UIAlertController(title: "Colab requested !", message: "Wait for partner response", preferredStyle: UIAlertController.Style.alert)
+			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
 		})
 		colabAction.backgroundColor = .appAcentBlue()
 		return [battleAction, colabAction]
