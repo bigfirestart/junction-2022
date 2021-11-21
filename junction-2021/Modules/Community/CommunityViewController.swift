@@ -149,6 +149,7 @@ extension CommunityViewController: UITableViewDataSource {
 		if indexPath.row == 2 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
 			cell?.configureCollab()
+            cell?.transitionButton.addTarget(self, action: #selector(collabBannerButtonTapped), for: .touchUpInside)
 			return cell ?? UITableViewCell()
 		}
 		
@@ -249,6 +250,11 @@ extension CommunityViewController {
 	func battleBannerButtonTapped() {
 		presenter?.battleBannerButtonTapped()
 	}
+
+    @objc func collabBannerButtonTapped() {
+        let vc = CollabViewController(nib: R.nib.collabViewController)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension CommunityViewController: CommunityViewControllerProtocol {
