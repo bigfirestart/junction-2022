@@ -10,6 +10,7 @@ import Foundation
 protocol CoursePresenterProtocol: AnyObject {
     func viewDidLoadEvent()
     func didTapStage(with: StagesResponse)
+    func refresh(completion: (() -> Void)?)
 }
 
 final class CoursePresenter: CoursePresenterProtocol {
@@ -25,6 +26,10 @@ final class CoursePresenter: CoursePresenterProtocol {
     }
 
     func viewDidLoadEvent() {
+        refresh()
+    }
+
+    func refresh(completion: (() -> Void)? = nil) {
         networkService.stages { [weak self] result in
             switch result {
             case .success(let data):
@@ -41,6 +46,8 @@ final class CoursePresenter: CoursePresenterProtocol {
             case .failure:
                 self?.view?.setTeamState(with: .loading)
             }
+
+            completion?()
         }
     }
 

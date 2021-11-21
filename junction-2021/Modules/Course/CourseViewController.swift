@@ -55,6 +55,12 @@ final class CourseViewController: UIViewController {
 
         table.register(TitleWithRoundTopHeader.self, forHeaderFooterViewReuseIdentifier: Constants.headerReuseId)
         table.register(TitleWithRoundTopHeader.self, forHeaderFooterViewReuseIdentifier: Constants.footerReuseId)
+
+        let refreshControl = UIRefreshControl()
+        table.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+
         return table
     }()
 
@@ -91,6 +97,12 @@ final class CourseViewController: UIViewController {
 
         tableView.separatorStyle = .none
         tableView.contentInset = Constants.tableViewContentInset
+    }
+
+    @objc private func refresh() {
+        presenter?.refresh { [weak self] in
+            self?.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
 

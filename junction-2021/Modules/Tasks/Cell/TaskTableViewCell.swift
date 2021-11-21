@@ -96,6 +96,13 @@ class TaskTableViewCell: UITableViewCell {
         return statusImageView
     }()
 
+    private lazy var deltaAmountLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.textColor = .secondaryText()
+        return label
+    }()
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -118,6 +125,7 @@ class TaskTableViewCell: UITableViewCell {
         wrapperView.addSubview(submitButton)
         wrapperView.addSubview(questionStackView)
         wrapperView.addSubview(checkpointStatusImageView)
+        wrapperView.addSubview(deltaAmountLabel)
 
         checkpointStatusImageView.snp.makeConstraints { make in
             make.center.equalTo(titleLabel.snp.center)
@@ -129,6 +137,11 @@ class TaskTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalTo(checkpointStatusImageView.snp.leading).inset(16)
             make.top.equalToSuperview().offset(16)
+        }
+
+        deltaAmountLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
+            make.centerY.equalTo(titleLabel.snp.centerY)
         }
 
         textStackView.snp.makeConstraints { make in
@@ -170,9 +183,6 @@ class TaskTableViewCell: UITableViewCell {
         let textFieldView = UITextField()
         textFieldView.placeholder = "Write a comment"
         textFieldView.font = .systemFont(ofSize: 15, weight: .semibold)
-
-//        let amountLabel = UILabel()
-//        amountLabel.font = .systemFont(ofSize: 15, weight: .regular)
 
         wrapperView.addSubview(titleLabel)
         wrapperView.addSubview(textFieldWrapperView)
@@ -218,6 +228,18 @@ class TaskTableViewCell: UITableViewCell {
         id = model.id
         cellState = .task
         titleLabel.text = model.name
+
+        if let points = model.points {
+            let pointsFloat: Float = Float(points) / 10
+            deltaAmountLabel.text = "+" + String(pointsFloat)
+            deltaAmountLabel.isHidden = false
+            submitButton.isEnabled = false
+            submitButton.setTitleColor(.gray, for: .normal)
+        } else {
+            deltaAmountLabel.isHidden = true
+            submitButton.isEnabled = true
+            submitButton.setTitleColor(.black, for: .normal)
+        }
 
         checkpointStatusImageView.isHidden = true
 
