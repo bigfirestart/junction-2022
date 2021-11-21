@@ -12,14 +12,19 @@ protocol NetworkServiceProtocol {
 	func leaderboard(completion: @escaping (Result<[LeaderboardResponse], Error>) -> Void)
     func team(completion: @escaping (Result<TeamResponse, Error>) -> Void)
     func tasks(stageId: Int, completion: @escaping (Result<TasksResponse, Error>) -> Void)
+    func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
 	private let host = "http://home.kuzznya.space/api/v1"
     private let tokenManager: TokenManagerProtocol
 	
-	enum AppUrl: String {
-		case auth, stages, team, leaderboard, tasks
+	enum AppUrl {
+        enum SubmitType {
+            case checkpoint(Int), task(Int)
+        }
+
+		case auth, stages, team, leaderboard, tasks, submit(SubmitType)
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -33,6 +38,13 @@ final class NetworkService: NetworkServiceProtocol {
                 return host + "/teams/current"
             case .tasks:
                 return host + "/stages/"
+            case .submit(let type):
+                switch type {
+                case .checkpoint(let id):
+                    return host + "/checkpoints/\(id)/submissions"
+                case .task(let id):
+                    return host + "/tasks/\(id)/submissions"
+                }
 			}
 			
 		}
@@ -145,16 +157,33 @@ final class NetworkService: NetworkServiceProtocol {
             completion(.success(value))
         }
     }
+
+    func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void) {
+        let url = AppUrl.submit(isCheckpoint ? .checkpoint(id) : .task(id)).absoluteUrl(host: host)
+
+        guard let token = tokenManager.get() else {
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+
+        AF.request(url, method: .post, parameters: values, encoding: JSONEncoding.default, headers: headers).response { res in
+            completion()
+        }
+    }
 }
 
 struct TasksResponse: Decodable {
     struct Block: Decodable {
+        let id: Int
         let content: String
         let type: String
         let index: Int
     }
 
     struct Task: Decodable {
+        let id: Int
         let name: String
         let index: Int
         let points: Int?
@@ -162,10 +191,10 @@ struct TasksResponse: Decodable {
     }
 
     struct Checkpoint: Decodable {
+        let id: Int
         let name: String
         let status: String
         let points: Int?
-        let index: Int
         let blocks: [Block]
     }
 

@@ -10,6 +10,8 @@ import UIKit
 protocol TasksViewControllerProtocol: AnyObject {
     func setTeamState(with: TasksViewController.TeamState)
     func setTasksState(with: TasksViewController.TasksState)
+
+    func didPressSubmit(isCheckpoint: Bool, id: Int, values: [String: String])
 }
 
 class TasksViewController: UIViewController {
@@ -126,6 +128,10 @@ class TasksViewController: UIViewController {
 }
 
 extension TasksViewController: TasksViewControllerProtocol {
+    func didPressSubmit(isCheckpoint: Bool, id: Int, values: [String: String]) {
+        presenter?.didPressSubmit(isCheckpoint: isCheckpoint, id: id, values: values)
+    }
+
     func setTasksState(with state: TasksState) {
         tasksState = state
     }
@@ -187,6 +193,8 @@ extension TasksViewController: UITableViewDataSource {
                 }
 
                 cell.configure(with: model.checkpoint)
+                cell.view = self
+
                 return cell
             case .loading:
                 return tableView.dequeueReusableCell(withIdentifier: Constants.loadingReuseId, for: indexPath)
@@ -204,6 +212,8 @@ extension TasksViewController: UITableViewDataSource {
             }
 
             cell.configure(with: model.tasks[row / 2])
+            cell.view = self
+            
             return cell
         case .loading:
             return tableView.dequeueReusableCell(withIdentifier: Constants.loadingReuseId, for: indexPath)
