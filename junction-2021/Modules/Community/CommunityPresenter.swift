@@ -37,13 +37,11 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 	func viewDidLoadEvent() {
 		network?.leaderboard { [weak self] result in
 			switch result {
-<<<<<<< Updated upstream
 			case .success(let data):
 				print(data)
 				self?.view?.setState(with: .data(data))
 			case .failure(let error):
 				print(error)
-=======
 			case .success(let team):
 				self.network?.leaderboard { [weak self] result in
 					switch result {
@@ -61,7 +59,6 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 				}
 			case .failure:
 				print("F")
->>>>>>> Stashed changes
 			}
 		}
 	}
