@@ -94,7 +94,7 @@ extension LeaderboardViewController: UITableViewDataSource {
 				return UITableViewCell()
 			}
 
-			cell.configure(model: leaderboard[indexPath.row])
+			cell.configure(model: leaderboard[indexPath.row], index: indexPath.row + 1)
 			return cell
 		case .loading:
 			return tableView.dequeueReusableCell(withIdentifier: Constants.loaderReuseId, for: indexPath)

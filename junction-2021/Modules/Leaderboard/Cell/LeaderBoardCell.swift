@@ -50,30 +50,11 @@ class LeaderBoardCell: UITableViewCell {
 		wrapper.layer.cornerRadius = 14
 	}
 	
-	func configure(model: LeaderboardResponse) {
-		self.numberLabel.text = String(model.id) + "."
+	func configure(model: LeaderboardResponse, index: Int) {
+		self.numberLabel.text = String(index) + "."
 		self.commandNameLabel.text = model.name
 		let point: Float = Float(model.points) / Float(10)
 		self.pointsLabel.text = String(format: "%.1f", point)
-	}
-	
-	func colorBackground(with color: BackgroundColor) {
-//		switch color {
-//		case .orange:
-//			higlihtedBackgroundView.backgroundColor = .appAcentOrange()
-//		case .blue:
-//			higlihtedBackgroundView.backgroundColor = .appAcentBlue()
-//			hideButton()
-//		case .grey:
-//			higlihtedBackgroundView.backgroundColor = .appDarkGrey()
-//			hideButton()
-//		}
-//		
-//		higlihtedBackgroundView.layer.cornerRadius = 10
-//		numberLabel.textColor = .appModal()
-//		numberLabel.backgroundColor = .appAcentOrange()
-//		pointsLabel.textColor = .appModal()
-//		commandNameLabel.textColor = .appModal()
 	}
 	
 	override func prepareForReuse() {

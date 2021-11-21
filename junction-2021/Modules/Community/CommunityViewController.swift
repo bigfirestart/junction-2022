@@ -35,6 +35,10 @@ final class CommunityViewController: UIViewController {
 		}
 	}
 	
+	var userInLeaderboard: LeaderboardResponse?
+	
+	var userPositionInLeaderboard: Int?
+	
 	private lazy var tableView: UITableView = {
 		let table = UITableView()
 		table.delegate = self
@@ -168,10 +172,17 @@ extension CommunityViewController: UITableViewDataSource {
 		}
 		
 		if indexPath.row == 2 {
-			let leaderBoardBanner = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
-			leaderBoardBanner?.asBanner()
-			leaderBoardBanner?.commandLogo.image = AvatarFactory.getUserAvatar()
-			return leaderBoardBanner ?? UITableViewCell()
+			if let team = userInLeaderboard,
+			   let index = userPositionInLeaderboard {
+				let leaderBoardBanner = tableView.dequeueReusableCell(withIdentifier: Constants.topLeaderBoardReuseId, for: indexPath) as? LeaderBoardCell
+				leaderBoardBanner?.asBanner()
+				leaderBoardBanner?.commandLogo.image = AvatarFactory.getUserAvatar()
+				leaderBoardBanner?.configure(model: team, index: index + 1)
+				return leaderBoardBanner ?? UITableViewCell()
+			} else {
+				tableView.dequeueReusableCell(withIdentifier: Constants.loaderReuseId, for: indexPath)
+			}
+		
 		}
 		
 		if indexPath.row == 3 {
@@ -189,7 +200,7 @@ extension CommunityViewController: UITableViewDataSource {
 					return UITableViewCell()
 				}
 
-				cell.configure(model: leaderboard[indexPath.row])
+				cell.configure(model: leaderboard[indexPath.row], index: indexPath.row + 1)
 				return cell
 			}
 			if indexPath.row == leaderboard.count {

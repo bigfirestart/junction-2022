@@ -35,14 +35,30 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 	}
 	
 	func viewDidLoadEvent() {
-		network?.leaderboard { [weak self] result in
+		network?.team { result in
 			switch result {
-			case .success(let data):
-				print(data)
-				self?.view?.setState(with: .data(data))
-			case .failure(let error):
-				print(error)
+			case .success(let team):
+				self.network?.leaderboard { [weak self] result in
+					switch result {
+					case .success(let leaderBoard):
+						let ourTeam = leaderBoard.first(where: {$0.id == team.id})
+						let position = leaderBoard.firstIndex(where: {$0.id == team.id})
+						
+						let view = self?.view as? CommunityViewController
+						view?.userInLeaderboard = ourTeam
+						view?.userPositionInLeaderboard = position ?? 0 + 1
+						self?.view?.setState(with: .data(leaderBoard))
+					case .failure(let error):
+						print(error)
+					}
+				}
+			case .failure:
+				print("F")
 			}
 		}
+	}
+	
+	func getCurrentTeam() {
+		
 	}
 }
