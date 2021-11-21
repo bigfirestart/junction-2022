@@ -47,7 +47,7 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 						let view = self?.view as? CommunityViewController
 						view?.userInLeaderboard = ourTeam
 						view?.userPositionInLeaderboard = position ?? 0 + 1
-						self?.view?.setState(with: .data(leaderBoard))
+						self?.view?.setState(with: .data(Array(leaderBoard[0..<5])))
 					case .failure(let error):
 						print(error)
 					}
