@@ -14,7 +14,9 @@ class BattleViewController: UIViewController {
 	@IBOutlet weak var rullesBanner: UIView!
 	@IBOutlet weak var rullesBannerLabel: UILabel!
 	
-	@IBOutlet weak var userProgress: StepIndicatorView!
+    @IBOutlet weak var opponetLabel: UILabel!
+    @IBOutlet weak var yourTeamLabel: UILabel!
+    @IBOutlet weak var userProgress: StepIndicatorView!
 	@IBOutlet weak var enemyProgress: StepIndicatorView!
 	
 	override func viewDidLoad() {
@@ -27,6 +29,9 @@ class BattleViewController: UIViewController {
 		
 		userProgress.numberOfSteps = 7
 		userProgress.currentStep = 5
+        
+        yourTeamLabel.text = "Team 1"
+        opponetLabel.text = "Team 2"
     }
 	
 	override func viewWillAppear(_ animated: Bool) {

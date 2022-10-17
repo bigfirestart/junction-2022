@@ -21,15 +21,6 @@ class LeaderBoardCell: UITableViewCell {
 	@IBOutlet weak var higlihtedBackgroundView: UIView!
 	@IBOutlet weak var commandLogo: UIImageView!
 	
-	override func awakeFromNib() {
-		super.awakeFromNib()
-	}
-
-	override func setSelected(_ selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-		setupView()
-	}
-	
 	private func setupView() {
         wrapper.translatesAutoresizingMaskIntoConstraints = false
         
@@ -53,6 +44,7 @@ class LeaderBoardCell: UITableViewCell {
 	}
 	
 	func configure(model: LeaderboardResponse, index: Int) {
+        setupView()
 		self.numberLabel.text = String(index) + "."
 		self.commandNameLabel.text = model.name
 		let point: Float = Float(model.points) / Float(10)
