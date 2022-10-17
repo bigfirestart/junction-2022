@@ -13,6 +13,7 @@ protocol CommunityPresenterProtocol {
 	func didTapLeaderBoard()
 	func battleBannerButtonTapped()
 	func viewDidLoadEvent()
+    func loadActiveEvents()
 }
 
 final class CommunityPresenter: CommunityPresenterProtocol {
@@ -58,7 +59,25 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 		}
 	}
 	
-	func getCurrentTeam() {
-		
-	}
+    func loadActiveEvents() {
+        network?.getActiveBattle { [weak self] result in
+            switch result {
+            case .success(let data):
+                print(data)
+                self?.view?.setBattleState(with: .data(data))
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        network?.getActiveCollab { [weak self] result in
+            switch result {
+            case .success(let data):
+                print(data)
+                self?.view?.setCollabState(with: .data(data))
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

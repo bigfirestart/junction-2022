@@ -120,7 +120,7 @@ extension LeaderboardViewController: UITableViewDataSource {
 		battleAction.backgroundColor = .appAcentOrange()
 
 		// action two
-		let colabAction = UITableViewRowAction(style: .default, title: "Colab", handler: { (action, indexPath) in
+		let colabAction = UITableViewRowAction(style: .default, title: "Collab", handler: { (action, indexPath) in
 			let alert = UIAlertController(title: "Colab requested !", message: "Wait for partner response", preferredStyle: UIAlertController.Style.alert)
 			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
 			self.present(alert, animated: true, completion: nil)

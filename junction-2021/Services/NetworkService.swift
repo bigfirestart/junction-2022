@@ -13,10 +13,13 @@ protocol NetworkServiceProtocol {
     func team(completion: @escaping (Result<TeamResponse, Error>) -> Void)
     func tasks(stageId: Int, completion: @escaping (Result<TasksResponse, Error>) -> Void)
     func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void)
+    // Battles
+    func getActiveBattle(completion: @escaping (Result<Battle, Error>) -> Void)
+    func getActiveCollab(completion: @escaping (Result<Collab, Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
-	private let host = "http://home.kuzznya.space/api/v1"
+	private let host = "https://junction.kuzznya.space/api/v1"
     private let tokenManager: TokenManagerProtocol
 	
 	enum AppUrl {
@@ -24,7 +27,8 @@ final class NetworkService: NetworkServiceProtocol {
             case checkpoint(Int), task(Int)
         }
 
-		case auth, stages, team, leaderboard, tasks, submit(SubmitType)
+		case auth, stages, team, leaderboard, tasks, submit(SubmitType),
+             activeBattle, activeCollab
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -45,8 +49,11 @@ final class NetworkService: NetworkServiceProtocol {
                 case .task(let id):
                     return host + "/tasks/\(id)/submissions"
                 }
+            case .activeBattle:
+                return host + "/battles/current"
+            case .activeCollab:
+                return host + "/collabs/current"
 			}
-			
 		}
 	}
 
@@ -172,6 +179,53 @@ final class NetworkService: NetworkServiceProtocol {
             completion()
         }
     }
+    
+    func getActiveBattle(completion: @escaping (Result<Battle, Error>) -> Void) {
+        let url = AppUrl.activeBattle.absoluteUrl(host: host)
+
+        guard let token = tokenManager.get() else {
+            completion(.failure(AppError.pnhError))
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+
+        let request = AF.request(url, headers: headers)
+        request.responseDecodable(of: Battle.self) { res in
+            guard let value = res.value else {
+                print("🟥 Some network error")
+                completion(.failure(AppError.pnhError))
+                return
+            }
+
+            completion(.success(value))
+        }
+    }
+    
+    func getActiveCollab(completion: @escaping (Result<Collab, Error>) -> Void) {
+        let url = AppUrl.activeCollab.absoluteUrl(host: host)
+
+        guard let token = tokenManager.get() else {
+            completion(.failure(AppError.pnhError))
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+
+        let request = AF.request(url, headers: headers)
+        request.responseDecodable(of: Collab.self) { res in
+            guard let value = res.value else {
+                print("🟥 Some network error")
+                completion(.failure(AppError.pnhError))
+                return
+            }
+
+            completion(.success(value))
+        }
+    }
+    
 }
 
 struct TasksResponse: Decodable {
@@ -230,4 +284,22 @@ struct LeaderboardResponse: Decodable {
 	let name: String
 	let groupId: Int
 	let points: Int
+}
+
+// Battles / Collabs
+struct User: Decodable {
+    let id: Int
+    let name: String
+}
+
+struct Battle: Decodable {
+    let id: Int
+    let initiator: User
+    let defender: User
+}
+
+struct Collab: Decodable {
+    let id: Int
+    let requester: User
+    let helper: User
 }

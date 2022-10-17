@@ -24,4 +24,8 @@ class SpaceCell: UITableViewCell {
 	public func withHeight(height: CGFloat) {
 		heightAnchor.constraint(equalToConstant: height).isActive = true
 	}
+    
+    override func prepareForReuse() {
+        constraints.forEach { $0.isActive = false }
+    }
 }

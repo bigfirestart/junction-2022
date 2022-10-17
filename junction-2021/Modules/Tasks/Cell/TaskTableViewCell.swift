@@ -28,7 +28,7 @@ class TaskTableViewCell: UITableViewCell {
             case .new:
                 return nil
             case .accepted:
-                return R.image.acceptedState()
+                return UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
             case .declined:
                 return R.image.declinedState()
             case .review:

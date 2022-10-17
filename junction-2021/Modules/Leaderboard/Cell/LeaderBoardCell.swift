@@ -31,6 +31,8 @@ class LeaderBoardCell: UITableViewCell {
 	}
 	
 	private func setupView() {
+        wrapper.translatesAutoresizingMaskIntoConstraints = false
+        
 		backgroundColor = .appBackground()
 		layer.cornerRadius = 20
 		selectionStyle = .none

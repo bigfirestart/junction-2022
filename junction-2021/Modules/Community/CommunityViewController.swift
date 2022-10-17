@@ -9,6 +9,8 @@ import UIKit
 
 protocol CommunityViewControllerProtocol: AnyObject {
 	func setState(with: CommunityViewController.State)
+    func setBattleState(with: CommunityViewController.BattleState)
+    func setCollabState(with: CommunityViewController.CollabState)
 }
 
 final class CommunityViewController: UIViewController {
@@ -28,12 +30,34 @@ final class CommunityViewController: UIViewController {
 		case loading
 		case data([LeaderboardResponse])
 	}
-	
-	var state: State = .loading {
-		didSet {
-			tableView.reloadData()
-		}
-	}
+    
+    var state: State = .loading {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    enum BattleState {
+        case loading
+        case data(Battle)
+    }
+    
+    var battleState: BattleState = .loading {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    enum CollabState {
+        case loading
+        case data(Collab)
+    }
+    
+    var collabState: CollabState = .loading {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 	
 	var userInLeaderboard: LeaderboardResponse?
 	
@@ -60,6 +84,7 @@ final class CommunityViewController: UIViewController {
 		
 		setupTable()
 		presenter?.viewDidLoadEvent()
+        presenter?.loadActiveEvents()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +106,7 @@ final class CommunityViewController: UIViewController {
 
 		tableView.separatorStyle = .none
 		tableView.contentInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
+        tableView.rowHeight = UITableView.automaticDimension
 	}
 }
 
@@ -136,10 +162,15 @@ extension CommunityViewController: UITableViewDataSource {
 	
 	func bannerSection(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.row == 0 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
-			cell?.configureBattle()
-			cell?.transitionButton.addTarget(self, action: #selector(battleBannerButtonTapped), for: .touchUpInside)
-			return cell ?? UITableViewCell()
+            switch battleState {
+            case .loading:
+                return space(cellForRowAt: indexPath, height: 1)
+            case .data:
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
+                cell?.configureBattle()
+                cell?.transitionButton.addTarget(self, action: #selector(battleBannerButtonTapped), for: .touchUpInside)
+                return cell ?? UITableViewCell()
+            }
 		}
 		
 		if indexPath.row == 1 {
@@ -147,19 +178,21 @@ extension CommunityViewController: UITableViewDataSource {
 		}
 		
 		if indexPath.row == 2 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
-			cell?.configureCollab()
-            cell?.transitionButton.addTarget(self, action: #selector(collabBannerButtonTapped), for: .touchUpInside)
-			return cell ?? UITableViewCell()
+            switch collabState {
+            case .loading:
+                return space(cellForRowAt: indexPath, height: 1)
+            case .data:
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bannerReuseId, for: indexPath) as? ActionBannerCell
+                cell?.configureCollab()
+                cell?.transitionButton.addTarget(self, action: #selector(collabBannerButtonTapped), for: .touchUpInside)
+                return cell ?? UITableViewCell()
+            }
 		}
 		
 		if indexPath.row == 3 {
 			return space(cellForRowAt: indexPath, height: 30)
 		}
-		
-		if indexPath.row == 4 {
-			return tableView.dequeueReusableCell(withIdentifier: Constants.teamReuseId, for: indexPath)
-		}
+
 		return UITableViewCell()
 	}
 	
@@ -261,4 +294,12 @@ extension CommunityViewController: CommunityViewControllerProtocol {
 	func setState(with state: State) {
 		self.state = state
 	}
+    
+    func setBattleState(with state: BattleState) {
+        self.battleState = state
+    }
+    
+    func setCollabState(with state: CollabState) {
+        self.collabState = state
+    }
 }
