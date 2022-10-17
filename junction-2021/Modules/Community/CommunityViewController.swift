@@ -85,6 +85,10 @@ final class CommunityViewController: UIViewController {
 		setupTable()
 		presenter?.viewDidLoadEvent()
         presenter?.loadActiveEvents()
+        let refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -174,7 +178,11 @@ extension CommunityViewController: UITableViewDataSource {
 		}
 		
 		if indexPath.row == 1 {
-			return space(cellForRowAt: indexPath, height: 20)
+            if case BattleState.data = battleState,
+               case CollabState.data = collabState {
+                return space(cellForRowAt: indexPath, height: 20)
+            }
+            return space(cellForRowAt: indexPath, height: 1)
 		}
 		
 		if indexPath.row == 2 {
@@ -301,5 +309,14 @@ extension CommunityViewController: CommunityViewControllerProtocol {
     
     func setCollabState(with state: CollabState) {
         self.collabState = state
+    }
+    
+    @objc private func refresh() {
+        state = .loading
+        battleState = .loading
+        collabState = .loading
+        presenter?.viewDidLoadEvent()
+        presenter?.loadActiveEvents()
+        self.tableView.refreshControl?.endRefreshing()
     }
 }

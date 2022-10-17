@@ -52,4 +52,7 @@ class ActionBannerCell: UITableViewCell, PressAnimatable {
 		wrapperView.backgroundColor = .appAcentBlue()
 	}
     
+    override func prepareForReuse() {
+        transitionButton.removeTarget(nil, action: nil, for: .allEvents)
+    }
 }
