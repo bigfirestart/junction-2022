@@ -9,6 +9,8 @@ import UIKit
 
 protocol LeaderboardViewControllerProtocol: AnyObject {
 	func setState(with: LeaderboardViewController.State)
+    func showBattleIniateAlert()
+    func showCollabIniateAlert()
 }
 
 class LeaderboardViewController: UIViewController {
@@ -113,17 +115,25 @@ extension LeaderboardViewController: UITableViewDataSource {
 	// swiftlint:disable
 	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 		let battleAction = UITableViewRowAction(style: .default, title: "Battle", handler: { (action, indexPath) in
-			let alert = UIAlertController(title: "Battle requested !", message: "Wait for opponent response", preferredStyle: UIAlertController.Style.alert)
-			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-			self.present(alert, animated: true, completion: nil)
+            switch self.state{
+            case .data(let data):
+                let opponentId: Int = data[indexPath.row].id
+                self.presenter?.initateBattle(opponentId: opponentId)
+            case .loading:
+                return 
+            }
 		})
 		battleAction.backgroundColor = .appAcentOrange()
 
 		// action two
 		let colabAction = UITableViewRowAction(style: .default, title: "Collab", handler: { (action, indexPath) in
-			let alert = UIAlertController(title: "Colab requested !", message: "Wait for partner response", preferredStyle: UIAlertController.Style.alert)
-			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-			self.present(alert, animated: true, completion: nil)
+            switch self.state{
+            case .data(let data):
+                let helperId: Int = data[indexPath.row].id
+                self.presenter?.initateCollab(helperId: helperId)
+            case .loading:
+                return
+            }
 		})
 		colabAction.backgroundColor = .appAcentBlue()
 		return [battleAction, colabAction]
@@ -134,4 +144,16 @@ extension LeaderboardViewController: LeaderboardViewControllerProtocol {
 	func setState(with state: State) {
 		self.state = state
 	}
+    
+    func showBattleIniateAlert() {
+        let alert = UIAlertController(title: "Battle requested !", message: "Wait for opponent response", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showCollabIniateAlert() {
+        let alert = UIAlertController(title: "Colab requested !", message: "Wait for partner response", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

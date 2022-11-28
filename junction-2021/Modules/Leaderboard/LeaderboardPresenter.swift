@@ -10,6 +10,8 @@ import UIKit
 protocol LeaderboardPresenterProtocol {
 	init(router: RouterProtocol, view: LeaderboardViewControllerProtocol, networkService: NetworkServiceProtocol)
 	func viewDidLoadEvent()
+    func initateBattle(opponentId: Int)
+    func initateCollab(helperId: Int)
 }
 
 final class LeaderboardPresenter: LeaderboardPresenterProtocol {
@@ -34,4 +36,16 @@ final class LeaderboardPresenter: LeaderboardPresenterProtocol {
 			}
 		}
 	}
+    
+    func initateBattle(opponentId: Int) {
+        networkService?.initiateBattle(opponentId: opponentId) { [weak self]  in
+            self?.view?.showBattleIniateAlert()
+        }
+    }
+    
+    func initateCollab(helperId: Int) {
+        networkService?.initiateCollab(helperId: helperId) {
+            self.view?.showCollabIniateAlert()
+        }
+    }
 }

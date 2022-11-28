@@ -15,11 +15,14 @@ protocol NetworkServiceProtocol {
     func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void)
     // Battles
     func getActiveBattle(completion: @escaping (Result<Battle, Error>) -> Void)
+    func initiateBattle(opponentId: Int, completion: @escaping () -> ())
+    // Collabs
     func getActiveCollab(completion: @escaping (Result<Collab, Error>) -> Void)
+    func initiateCollab(helperId: Int, completion: @escaping () -> ())
 }
 
 final class NetworkService: NetworkServiceProtocol {
-	private let host = "https://junction.kuzznya.space/api/v1"
+	private let host = "https://junction.kuzznya.com/api/v1"
     private let tokenManager: TokenManagerProtocol
 	
 	enum AppUrl {
@@ -28,7 +31,7 @@ final class NetworkService: NetworkServiceProtocol {
         }
 
 		case auth, stages, team, leaderboard, tasks, submit(SubmitType),
-             activeBattle, activeCollab
+             activeBattle, initiateBattle, activeCollab, initiateCollab
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -36,12 +39,12 @@ final class NetworkService: NetworkServiceProtocol {
                 return host + "/authentication"
             case .stages:
                 return host + "/courses/current/stages"
-			case .leaderboard:
-				return host + "/teams/leaderboard"
+            case .leaderboard:
+                return host + "/teams/leaderboard"
             case .team:
                 return host + "/teams/current"
             case .tasks:
-                return host + "/stages/"
+                    return host + "/stages/"
             case .submit(let type):
                 switch type {
                 case .checkpoint(let id):
@@ -51,9 +54,13 @@ final class NetworkService: NetworkServiceProtocol {
                 }
             case .activeBattle:
                 return host + "/battles/current"
+            case .initiateBattle:
+                return host + "/battles/initiate"
             case .activeCollab:
                 return host + "/collabs/current"
-			}
+            case .initiateCollab:
+                return host + "/collabs/initiate"
+            }
 		}
 	}
 
@@ -226,6 +233,37 @@ final class NetworkService: NetworkServiceProtocol {
         }
     }
     
+    func initiateBattle(opponentId: Int, completion: @escaping () -> ()) {
+        let url = AppUrl.initiateBattle.absoluteUrl(host: host)
+            + "?opponentId=\(opponentId)&checkpointId=0"
+
+        guard let token = tokenManager.get() else {
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).response { res in
+            completion()
+        }
+    }
+    
+    func initiateCollab(helperId: Int, completion: @escaping () -> ()) {
+        let url = AppUrl.initiateCollab.absoluteUrl(host: host)
+            + "?helperId=\(helperId)"
+
+        guard let token = tokenManager.get() else {
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).response { res in
+            completion()
+        }
+    }
 }
 
 struct TasksResponse: Decodable {

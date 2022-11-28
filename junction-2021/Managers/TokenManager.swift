@@ -10,6 +10,7 @@ import Foundation
 protocol TokenManagerProtocol {
     func set(token: String)
     func get() -> String?
+    func delete()
 }
 
 final class TokenManager: TokenManagerProtocol {
@@ -43,5 +44,9 @@ final class TokenManager: TokenManagerProtocol {
 
     func get() -> String? {
         token
+    }
+    
+    func delete() {
+        keyChain.deleteFromKeyChain()
     }
 }
