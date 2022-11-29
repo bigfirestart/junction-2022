@@ -18,20 +18,32 @@ class BattleViewController: UIViewController {
     @IBOutlet weak var yourTeamLabel: UILabel!
     @IBOutlet weak var userProgress: StepIndicatorView!
 	@IBOutlet weak var enemyProgress: StepIndicatorView!
+    
+    var progress: BattleProgress?
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		rullesBanner.layer.cornerRadius = 14
-		
-		enemyProgress.numberOfSteps = 7
-		enemyProgress.currentStep  = 3
-		
-		userProgress.numberOfSteps = 7
-		userProgress.currentStep = 5
         
-        yourTeamLabel.text = "Team 1"
-        opponetLabel.text = "Team 2"
+        guard let progress = progress else {
+            return
+        }
+
+        enemyProgress.numberOfSteps = progress.defenderProgress.count
+
+        enemyProgress.currentStep = progress.defenderProgress.compactMap {
+            $0.done == true ? $0 : nil
+        }.count
+        
+        userProgress.numberOfSteps = progress.initiatorProgress.count
+        userProgress.currentStep = progress.initiatorProgress.compactMap {
+            $0.done == true ? $0 : nil
+        }.count
+        
+        yourTeamLabel.text = progress.battle.initiator.name
+        opponetLabel.text = progress.battle.defender.name
+       
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -43,5 +55,4 @@ class BattleViewController: UIViewController {
 			self?.navigationController?.navigationBar.sizeToFit()
 		}
 	}
-
 }

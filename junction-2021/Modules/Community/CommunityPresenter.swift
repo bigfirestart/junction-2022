@@ -20,6 +20,7 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 	private weak var view: CommunityViewControllerProtocol?
 	private let router: RouterProtocol?
 	private let network: NetworkServiceProtocol?
+    private var activeBattle: Battle?
 	
 	required init(router: RouterProtocol, view: CommunityViewControllerProtocol, networkService: NetworkServiceProtocol) {
 		self.view = view
@@ -32,8 +33,17 @@ final class CommunityPresenter: CommunityPresenterProtocol {
 	}
 	
 	func battleBannerButtonTapped() {
-		router?.moduleWantsToOpenBattleScreen()
-	}
+        if let activeBattle = self.activeBattle {
+            network?.getBattleProgress(battleId: activeBattle.id) { result in
+                switch result{
+                case .success(let data):
+                    self.router?.moduleWantsToOpenBattleScreen(with: data)
+                case .failure:
+                    print("F")
+                }
+            }
+        }
+    }
 	
 	func viewDidLoadEvent() {
 		network?.team { result in
@@ -64,6 +74,7 @@ final class CommunityPresenter: CommunityPresenterProtocol {
             switch result {
             case .success(let data):
                 print(data)
+                self?.activeBattle = data
                 self?.view?.setBattleState(with: .data(data))
             case .failure(let error):
                 print(error)

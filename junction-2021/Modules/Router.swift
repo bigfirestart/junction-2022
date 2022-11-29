@@ -12,7 +12,7 @@ protocol RouterProtocol {
     func moduleWantsToOpenAuthorized()
     func moduleWantsToOpenTasks(with: Int)
 	func moduleWantsToOpenLeaderboard()
-	func moduleWantsToOpenBattleScreen()
+    func moduleWantsToOpenBattleScreen(with progress: BattleProgress)
 }
 
 final class Router: RouterProtocol {
@@ -61,8 +61,8 @@ final class Router: RouterProtocol {
 		communityNavigationController?.pushViewController(leaderboardVC, animated: true)
 	}
 	
-	func moduleWantsToOpenBattleScreen() {
-		let battleVC = assembly.createBattleScreen(router: self, container: container)
+    func moduleWantsToOpenBattleScreen(with progress: BattleProgress) {
+        let battleVC = assembly.createBattleScreen(progress: progress, router: self, container: container)
 		communityNavigationController?.pushViewController(battleVC, animated: true)
 	}
 }

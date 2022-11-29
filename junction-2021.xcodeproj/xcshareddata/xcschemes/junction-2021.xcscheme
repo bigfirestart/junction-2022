@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D3E4994C27454E1400B9D58C"
-               BuildableName = "junction-2021.app"
-               BlueprintName = "junction-2021"
+               BuildableName = "AVP Incubator.app"
+               BlueprintName = "AVP Incubator"
                ReferencedContainer = "container:junction-2021.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D3E4994C27454E1400B9D58C"
-            BuildableName = "junction-2021.app"
-            BlueprintName = "junction-2021"
+            BuildableName = "AVP Incubator.app"
+            BlueprintName = "AVP Incubator"
             ReferencedContainer = "container:junction-2021.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D3E4994C27454E1400B9D58C"
-            BuildableName = "junction-2021.app"
-            BlueprintName = "junction-2021"
+            BuildableName = "AVP Incubator.app"
+            BlueprintName = "AVP Incubator"
             ReferencedContainer = "container:junction-2021.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

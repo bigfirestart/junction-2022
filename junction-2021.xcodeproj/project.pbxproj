@@ -104,7 +104,7 @@
 		BE08C6A2579256E15282A39B /* Pods-junction-2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-junction-2021.release.xcconfig"; path = "Target Support Files/Pods-junction-2021/Pods-junction-2021.release.xcconfig"; sourceTree = "<group>"; };
 		D37F8FC42749EB4900A4387E /* CollabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollabViewController.swift; sourceTree = "<group>"; };
 		D37F8FC52749EB4900A4387E /* CollabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollabViewController.xib; sourceTree = "<group>"; };
-		D3E4994D27454E1400B9D58C /* junction-2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "junction-2021.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E4994D27454E1400B9D58C /* AVP Incubator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AVP Incubator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E4995027454E1400B9D58C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3E4995E27454E1600B9D58C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3E4996A27479F0C00B9D58C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -288,7 +288,7 @@
 		D3E4994E27454E1400B9D58C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3E4994D27454E1400B9D58C /* junction-2021.app */,
+				D3E4994D27454E1400B9D58C /* AVP Incubator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -398,9 +398,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D3E4994C27454E1400B9D58C /* junction-2021 */ = {
+		D3E4994C27454E1400B9D58C /* AVP Incubator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D3E4996127454E1600B9D58C /* Build configuration list for PBXNativeTarget "junction-2021" */;
+			buildConfigurationList = D3E4996127454E1600B9D58C /* Build configuration list for PBXNativeTarget "AVP Incubator" */;
 			buildPhases = (
 				AD53E83233E3EEAFE9878E58 /* [CP] Check Pods Manifest.lock */,
 				D3E4996727479D7200B9D58C /* R.swift */,
@@ -414,9 +414,9 @@
 			);
 			dependencies = (
 			);
-			name = "junction-2021";
+			name = "AVP Incubator";
 			productName = "junction-2021";
-			productReference = D3E4994D27454E1400B9D58C /* junction-2021.app */;
+			productReference = D3E4994D27454E1400B9D58C /* AVP Incubator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -446,7 +446,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D3E4994C27454E1400B9D58C /* junction-2021 */,
+				D3E4994C27454E1400B9D58C /* AVP Incubator */,
 			);
 		};
 /* End PBXProject section */
@@ -788,7 +788,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D3E4996127454E1600B9D58C /* Build configuration list for PBXNativeTarget "junction-2021" */ = {
+		D3E4996127454E1600B9D58C /* Build configuration list for PBXNativeTarget "AVP Incubator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D3E4996227454E1600B9D58C /* Debug */,

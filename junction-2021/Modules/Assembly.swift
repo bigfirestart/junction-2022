@@ -13,7 +13,7 @@ protocol AssemblyProtocol: AnyObject {
     func createAuthorizedScreens(router: RouterProtocol, container: Container) -> (tab: UITabBarController, course: UINavigationController, community: UINavigationController)
     func createTasksScreen(router: RouterProtocol, id: Int, container: Container) -> UIViewController
 	func createLeaderboardScreen(router: RouterProtocol, container: Container) -> UIViewController
-	func createBattleScreen(router: RouterProtocol, container: Container) -> UIViewController
+    func createBattleScreen(progress: BattleProgress, router: RouterProtocol, container: Container) -> UIViewController
 }
 
 final class Assembly: AssemblyProtocol {
@@ -74,9 +74,9 @@ final class Assembly: AssemblyProtocol {
 		return leaderboardViewController
 	}
 	
-	func createBattleScreen(router: RouterProtocol, container: Container) -> UIViewController {
+    func createBattleScreen(progress: BattleProgress, router: RouterProtocol, container: Container) -> UIViewController {
 		let vc = BattleViewController()
-		let battlePresenter = BattlePresenter(router: router, view: vc)
+        let battlePresenter = BattlePresenter(progress: progress, router: router, view: vc, networkService: container.resolve())
 		vc.presenter = battlePresenter
 		
 		return vc

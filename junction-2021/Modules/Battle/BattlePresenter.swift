@@ -8,15 +8,18 @@
 import UIKit
 
 protocol BattlePresenterProtocol {
-	init(router: RouterProtocol, view: UIViewController)
+	init(progress: BattleProgress, router: RouterProtocol, view: BattleViewController, networkService: NetworkServiceProtocol)
 }
 
 final class BattlePresenter: BattlePresenterProtocol {
-	private weak var view: UIViewController?
+	private weak var view: BattleViewController?
 	private let router: RouterProtocol?
+    private let networkService: NetworkServiceProtocol?
 	
-	required init(router: RouterProtocol, view: UIViewController) {
+    required init(progress: BattleProgress, router: RouterProtocol, view: BattleViewController, networkService: NetworkServiceProtocol) {
 		self.view = view
 		self.router = router
+        self.networkService = networkService
+        view.progress = progress
 	}
 }

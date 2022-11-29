@@ -15,6 +15,7 @@ protocol NetworkServiceProtocol {
     func submit(id: Int, isCheckpoint: Bool, values: [String: String], completion: @escaping () -> Void)
     // Battles
     func getActiveBattle(completion: @escaping (Result<Battle, Error>) -> Void)
+    func getBattleProgress(battleId: Int, completion: @escaping (Result<BattleProgress, Error>) -> Void)
     func initiateBattle(opponentId: Int, completion: @escaping () -> ())
     // Collabs
     func getActiveCollab(completion: @escaping (Result<Collab, Error>) -> Void)
@@ -31,7 +32,7 @@ final class NetworkService: NetworkServiceProtocol {
         }
 
 		case auth, stages, team, leaderboard, tasks, submit(SubmitType),
-             activeBattle, initiateBattle, activeCollab, initiateCollab
+             activeBattle, battleProgress(Int), initiateBattle, activeCollab, initiateCollab
 		
 		func absoluteUrl(host: String) -> String {
 			switch self {
@@ -54,6 +55,8 @@ final class NetworkService: NetworkServiceProtocol {
                 }
             case .activeBattle:
                 return host + "/battles/current"
+            case .battleProgress(let id):
+                return host + "/battles/\(id)/progress"
             case .initiateBattle:
                 return host + "/battles/initiate"
             case .activeCollab:
@@ -222,20 +225,25 @@ final class NetworkService: NetworkServiceProtocol {
         let headers = HTTPHeaders([header])
 
         let request = AF.request(url, headers: headers)
-        request.responseDecodable(of: Collab.self) { res in
+        request.responseDecodable(of: [Collab].self) { res in
             guard let value = res.value else {
                 print("🟥 Some network error")
                 completion(.failure(AppError.pnhError))
                 return
             }
-
-            completion(.success(value))
+            
+            let result = value.flatMap {
+                $0.status == "ACCEPTED" ? $0 : nil
+            }
+            if let first = result.first {
+                completion(.success(first))
+            }
         }
     }
     
     func initiateBattle(opponentId: Int, completion: @escaping () -> ()) {
         let url = AppUrl.initiateBattle.absoluteUrl(host: host)
-            + "?opponentId=\(opponentId)&checkpointId=0"
+            + "?opponentId=\(opponentId)&checkpointId=25"
 
         guard let token = tokenManager.get() else {
             return
@@ -262,6 +270,29 @@ final class NetworkService: NetworkServiceProtocol {
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).response { res in
             completion()
+        }
+    }
+    
+    func getBattleProgress(battleId: Int, completion: @escaping (Result<BattleProgress, Error>) -> Void) {
+        let url = AppUrl.battleProgress(battleId).absoluteUrl(host: host)
+
+        guard let token = tokenManager.get() else {
+            completion(.failure(AppError.pnhError))
+            return
+        }
+
+        let header = HTTPHeader(name: "Authorization", value: "Bearer \(token)")
+        let headers = HTTPHeaders([header])
+
+        let request = AF.request(url, headers: headers)
+        request.responseDecodable(of: BattleProgress.self) { res in
+            guard let value = res.value else {
+                print("🟥 Some network error")
+                completion(.failure(AppError.pnhError))
+                return
+            }
+
+            completion(.success(value))
         }
     }
 }
@@ -340,4 +371,17 @@ struct Collab: Decodable {
     let id: Int
     let requester: User
     let helper: User
+    let status: String
+}
+
+struct BattleProgress: Decodable {
+    struct Progress: Decodable {
+        let name: String
+        let done: Bool
+    }
+    
+    let battle: Battle
+    
+    let initiatorProgress: [Progress]
+    let defenderProgress: [Progress]
 }
